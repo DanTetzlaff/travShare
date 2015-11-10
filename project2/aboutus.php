@@ -43,8 +43,8 @@ include('lib/helpers/travel-utilities.inc.php');
  <!-- Bootstrap core JavaScript
  ================================================== -->
  <!-- Placed at the end of the document so the pages load faster -->
- <script src="bootstrap-3.3.5-dist/assets/js/jquery.js"></script>
- <script src="bootstrap-3.3.5-dist/dist/js/bootstrap.min.js"></script>
- <script src="bootstrap-3.3.5-dist/assets/js/holder.js"></script>
+ <script src="bootstrap3_travelTheme/assets/js/jquery.js"></script>
+ <script src="bootstrap3_travelTheme/dist/js/bootstrap.min.js"></script>
+ <script src="bootstrap3_travelTheme/assets/js/holder.js"></script>
 </body>
 </html>
