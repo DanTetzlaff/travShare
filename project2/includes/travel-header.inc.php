@@ -22,7 +22,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand" href="#">Share Your Travels</a>
+             <a class="navbar-brand" href="index.php">Share Your Travels</a>
            </div>
            <div class="navbar-collapse collapse">
              <ul class="nav navbar-nav">
@@ -35,8 +35,8 @@
                    <li><a href="browse-posts.php">Posts</a></li>
                    <li><a href="browse-images.php">Images</a></li>
                    <li class="divider"></li>
-                   <li><a href="#">Countries</a></li>
-                   <li><a href="#">Users</a></li>                
+                   <li><a href="browse-countries.php">Countries</a></li>
+                   <li><a href="browse-users.php">Users</a></li>                
                  </ul>
                </li>
              </ul>
