@@ -109,5 +109,11 @@ function ouputPagination($startNum, $currentNum) {
      
 }
 
+function buildUName($user) {
+	$first = $user->FirstName;
+	$last = $user->LastName;
+	
+	return utf8_encode($first . ' ' . $last);
+}
 
 ?>
