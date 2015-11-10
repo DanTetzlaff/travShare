@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 	<title>Travel Template</title>
-	<?php include 'includes/travel-head.inc.php'; ?>
+	<?php 
+		include 'includes/travel-head.inc.php';
+		session_start();
+	?>
 </head>
 
 <body>
