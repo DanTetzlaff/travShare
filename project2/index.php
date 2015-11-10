@@ -5,6 +5,9 @@
 	<?php 
 		include 'includes/travel-head.inc.php';
 		session_start();
+		$_SESSION['favposts'] = array();
+		$_SESSION['favimgs'] = array();
+		$_SESSION['cart'] = array();
 	?>
 </head>
 
