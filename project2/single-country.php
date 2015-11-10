@@ -3,15 +3,9 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
-
-
-
-if ( isset($_GET['iso']) ) {
-   $id = $_GET['iso'];
-}
-else {
-   $id = 1;
-}
+$cc = "";
+$get = $_GET['cId'];
+if( isset($get) && ($get != "") && ctype_alpha($get) && (strlen($get) == 2) ){ $cc = $get; } else { header('Location: error.php'); }
 
 $countryGate = new CountryTableGateway($dbAdapter);
 $country = $countryGate->findById($id);
@@ -43,19 +37,20 @@ $cName = $country->CountryName;
          </ol>          
 
 		<div class = "well">
-			<p><h1><?php ?> </h1><p>
-			<p>Capital: <strong><?php ?></strong></p>
-			<p>Area: <strong><?php ?></strong> sq km</p>
-			<p>Population: <strong><?php  ?></strong></p>
-			<p>Currency Name: <strong><?php ?></strong></p>
-			<p><?php  ?></p>
+			<p><h1><?php echo $cName; ?> </h1><p>
+			<p>Capital: <strong><?php echo $pageCountry->Capital; ?></strong></p>
+			<p>Area: <strong><?php echo number_format($pageCountry->Area); ?></strong> sq km</p>
+			<p>Population: <strong><?php  echo number_format($pageCountry->Population); ?></strong></p>
+			<p>Currency Name: <strong><?php echo $pageCountry->CurrencyName; ?></strong></p>
+			<p><?php  echo $pageCountry->CountryDescription; ?></p>
 		</div>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">Images From <?php echo $cName;?></div>
 		  <div class="panel-body">
 				<?php
-					//gets all the photos from the country based on countryCode
-
+					$imgGate = new TravelImageTableGateway($dbAdapter);
+					$result = $imgGate->findForCountry($cId);
+					displayImagesThumbnails($result);
 				?>
 		  </div><!--end panel body -->
 		</div><!--end panel primary -->
