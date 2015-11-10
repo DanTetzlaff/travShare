@@ -86,7 +86,8 @@ $gate = new TravelImageTableGateway($dbAdapter);
                  <div class="panel-heading">Social</div>
                  <div class="panel-body">
                    <p><a href="add-fav.php?favimg=<?php echo $id; ?>" class="btn btn-primary btn-sm">Add to Favorites</a></p>
-                   <p><a href="view-favorites.php" class="btn btn-success btn-sm">View Favorites</a></p>                  
+                   <p><a href="view-favorites.php" class="btn btn-success btn-sm">View Favorites</a></p>
+                   <p><a href="add-cart.php?img=<?php echo $id; ?>" class="btn btn-info btn-sm">Add To Cart</a></p>
                  </div>
                </div>  
                
