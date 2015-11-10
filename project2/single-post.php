@@ -3,15 +3,9 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
-
-
-
-if ( isset($_GET['id']) ) {
-   $id = $_GET['id'];
-}
-else {
-   $id = 1;
-}
+$id = "";
+$get = $_GET['id'];
+if(isset($get) && $get != "" && is_numeric($get)){ $id = $get; } else { header('Location: error.php'); }
 
 $postGate = new TravelPostTableGateway($dbAdapter);
 $post = $postGate->findById($id);
