@@ -4,10 +4,7 @@
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
-	$postGateway = new TravelPostTableGateway($dbAdapter);
-	$imagesGateway = new TravelImageTableGateway($dbAdapter);
-	
-	print_r($_SESSION['favimgs']); 
+	print_r($_SESSION['favimgs']);
 	print_r($_SESSION['favposts']);
 ?>
 
@@ -33,7 +30,30 @@
 				<li class="active">Favorites</li>
 			</ol>
 			
-		
+			<div class="panel panel-default"> <!-- start favPost panel -->
+				<div class="panel-heading">
+					Favorite Posts
+					<div class="pull-right"><button type="button" class="btn btn-info btn-xs"><a href="rm-fav.php?rmAllP=1">Remove All Posts</a></button></div>
+				</div>
+				<ul class="list-group"> <!-- start favPost panel contents -->
+					<?php 
+						favPosts($_SESSION['favposts'], $dbAdapter); 
+					?>
+				</ul> <!-- end favPost panel contents -->
+			</div> <!-- end favPost panel -->
+			
+			<div class="panel panel-default"> <!-- start favImg panel -->
+				<div class="panel-heading">
+					Favorite Images
+					<div class="pull-right"><button type="button" class="btn btn-info btn-xs"><a href="rm-fav.php?rmAllI=1">Remove All Images</a></button></div>
+				</div>
+				<ul class="list-group"> <!-- start favImg panel contents -->
+					<?php
+						favImg($_SESSION['favimgs'], $dbAdapter);
+					?>
+				</ul> <!-- end favImg panel contents -->
+			</div> <!-- end favImg panel -->
+			<div class="pull-right"><button type="button" class="btn btn-danger btn-xs"><a href="rm-fav.php?clear=1">Remove All Favorites</a></button></div>
 		</div> <!-- end main content column -->
 	</div> <!-- end main content row -->
 </div> <!-- end main content container -->
