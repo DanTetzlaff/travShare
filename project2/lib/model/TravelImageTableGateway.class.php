@@ -65,6 +65,13 @@ class TravelImageTableGateway extends TableDataGateway
       return $this->convertRecordsToObjects($result);   
    }   
    
+   public function findForCountry($countryID)
+	{
+		$sql = $this->getSQLwithJoins();
+		$sql .= " WHERE CountryCodeISO=?";
+		$result = $this->dbAdapter->fetchAsArray($sql, Array($countryID));
+		return $this->convertRecordsToObjects($result);
+	}
 }
 
 ?>
