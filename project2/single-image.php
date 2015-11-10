@@ -29,8 +29,8 @@ $gate = new TravelImageTableGateway($dbAdapter);
       
       <div class="col-md-9">  <!-- start main content column -->
          <ol class="breadcrumb">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">Browse</a></li>
+           <li><a href="index.php">Home</a></li>
+           <li><a href="browse.php">Browse</a></li>
            <li><a href="browse-images.php">Images</a></li>
            <li class="active"><?php 
 		   $title = $travelImage->Title;
