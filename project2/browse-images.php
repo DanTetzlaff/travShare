@@ -40,8 +40,8 @@ $images = retrieveImages( $imagesGate, $city, $country );
       
       <div class="col-md-9">  <!-- start main content column -->
          <ol class="breadcrumb">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">Browse</a></li>
+           <li><a href="index.php">Home</a></li>
+           <li><a href="browse.php">Browse</a></li>
            <li class="active">Images</li>
          </ol>          
     
