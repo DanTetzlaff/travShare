@@ -116,4 +116,36 @@ function buildUName($user) {
 	return utf8_encode($first . ' ' . $last);
 }
 
+function favPosts ($fPost, $dbAdapter) {	
+	$postGate = new TravelPostTableGateway($dbAdapter);
+	
+	foreach ($fPost as $id)
+	{
+		$post = $postGate->findById($id);
+		
+		$imagesGate = new TravelImageTableGateway($dbAdapter);
+		$imageForPost = $imagesGate->findById( $post->MainPostImage );
+		
+		$postLink = 'single-post.php?id='. $post->PostID;   
+		$image = '<img src="images/travel/square-small/' . $imageForPost->Path . '" alt="' . $post->Title . '" class="img-thumbnail"/>';
+		
+		echo "<li class='list-group-item'>" . $image . " " . generateLink($postLink, $post->Title, null);
+		echo "<div class='pull-right'><button type='button' class='btn btn-warning btn-xs'>" . generateLink('rm-fav.php?postId='.$post->PostID, "Remove", null) . "</button></div></li>";
+	}
+}
+
+function favImg ($fImg, $dbAdapter) {
+	$imageGate = new TravelImageTableGateway($dbAdapter);
+	
+	foreach ($fImg as $id)
+	{
+		$img = $imageGate->findById($id);
+		
+		$imageLink = 'single-image.php?id=' . $img->ImageID;
+		$image = '<img src="images/travel/square-small/' . $img->Path . '" alt="' . $img->Title . '" class="img-thumbnail"/>';
+		
+		echo "<li class='list-group-item'>" . $image . " " . generateLink($imageLink, $img->Title, null);
+		echo "<div class='pull-right'><button type='button' class='btn btn-warning btn-xs'>" . generateLink('rm-fav.php?imgId='.$img->ImageID, "Remove", null) . "</button></div></li>";
+	}
+
 ?>
