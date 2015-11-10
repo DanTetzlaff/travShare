@@ -26,8 +26,8 @@ $countries = $countryGateway->findCountriesWithImages();
       
       <div class="col-md-9">  <!-- start main content column -->
          <ol class="breadcrumb">
-           <li><a href="#">Home</a></li><!--generateLink('index.php', '', 'Home'); -->
-           <li><a href="#">Browse</a></li> <!--generateLink('browse.php', '', 'Browse'); -->
+           <li><a href="index.php">Home</a></li><!--generateLink('index.php', '', 'Home'); -->
+           <li><a href="browse-countries.php">Browse</a></li> <!--generateLink('browse.php', '', 'Browse'); -->
            <li class="active">Countries</li>
          </ol>          
       
