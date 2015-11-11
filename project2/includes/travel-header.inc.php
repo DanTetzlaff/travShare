@@ -1,4 +1,18 @@
-
+<?php
+	if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+	}
+	
+	function countCart()
+	{
+		return count($_SESSION['cart']);
+	}
+	
+	function countFav()
+	{
+		return count($_SESSION['favimgs']) + count($_SESSION['favposts']);
+	}
+?>
 
 <header>
    <div id="topHeaderRow">
