@@ -60,7 +60,8 @@
     </div>
    </div>  <!-- end main content row -->
 </div>   <!-- end main content container -->
-   
+  <br/>
+  <br/>
 <?php include 'includes/travel-footer.inc.php'; ?>   
 
    
