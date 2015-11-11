@@ -44,7 +44,7 @@
                <li><a href="aboutus.php">About</a></li>
                <li><a href="#contact">Contact</a></li>
                <li class="dropdown">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+                 <a href="browse.php" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
                  <ul class="dropdown-menu">
                    <li><a href="browse-posts.php">Posts</a></li>
                    <li><a href="browse-images.php">Images</a></li>
