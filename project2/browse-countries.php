@@ -42,7 +42,7 @@ $countries = $countryGateway->findCountriesWithImages();
          <?php
 				foreach($countries as $country)
 				{
-					 echo '<li class="list-group-item"><a href="travel-country.php?iso=' . $country->ISO . '">' . $country->CountryName . '</a></li>';
+					 echo '<li class="list-group-item"><a href="single-country.php?cId=' . $country->ISO . '">' . $country->CountryName . '</a></li>';
 				}
          ?>
          </div>

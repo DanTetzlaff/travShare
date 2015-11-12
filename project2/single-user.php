@@ -48,7 +48,7 @@ $uName = buildUname($user);
 			
 		<div class='panel panel-primary'> <!-- Beginning of images panel -->
 			<div class='panel-heading'>Images from <?php echo $uName; ?></div>
-			<div class 'panel-body'> <!-- Beginning of image panel body -->
+			<div class= 'panel-body'> <!-- Beginning of image panel body -->
 				<?php
 					$imgGate = new TravelImageTableGateway($dbAdapter);
 					$result = $imgGate->findForUser($id);

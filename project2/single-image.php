@@ -68,16 +68,19 @@ $gate = new TravelImageTableGateway($dbAdapter);
                  <div class="panel-heading">Image Details</div>
                  <div class="panel-body">
                   <?php
-				  $cityGate = new CityTableGateway($dbAdapter);
-				  $city = $cityGate->findById($travelImage->CityCode);
-				  echo $city->AsciiName . ", ";
-				  $countryGate = new CountryTableGateway($dbAdapter);
-				  $countryISO = $travelImage->CountryCodeISO;
-				  $country = $countryGate->findById($countryISO);
-				  $link = "single-country.php?cId=" . $countryISO;
-				  $label = $country->CountryName;
-				  echo generateLink($link, $label, "");
-				  // display city and country name
+				  if($travelImage->CityCode != "")
+				  {					
+					  $cityGate = new CityTableGateway($dbAdapter);
+					  $city = $cityGate->findById($travelImage->CityCode);
+					  echo $city->AsciiName . ", ";
+					  $countryGate = new CountryTableGateway($dbAdapter);
+					  $countryISO = $travelImage->CountryCodeISO;
+					  $country = $countryGate->findById($countryISO);
+					  $link = "single-country.php?cId=" . $countryISO;
+					  $label = $country->CountryName;
+					  echo generateLink($link, $label, "");
+					  // display city and country name
+				  }
                   ?>              
                  </div>
                </div>  

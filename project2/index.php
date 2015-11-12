@@ -17,7 +17,7 @@
    
 <div class="container">  <!-- start main content container -->
    <div class="row">  <!-- start main content row -->
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -29,7 +29,7 @@
 		  <div class="carousel-caption">
 			<h3>From St. Peters</h3>
 			<p>This photo was taken at St. Peters</p>
-			<p><a class="btn btn-info btn-md" href="single-image.php?id=56" role="button">Learn more</a></p>
+			<p><a href="single-image.php?id=56"><button class="btn btn-info" role="button">Learn more</button></a></p>
 		  </div>
         </div>
         <div class="item">
@@ -37,7 +37,7 @@
 		  <div class="carousel-caption">
 			<h3>Pisa - Campasanto</h3>
 			<p>This photo is from Campasanto, Pisa</p>
-			<p><a class="btn btn-info btn-md" href="single-image.php?id=66" role="button">Learn more</a></p>
+			<p><a href="single-image.php?id=66"><button class="btn btn-info" role="button">Learn more</button></a></p>
 		  </div>
         </div>
         <div class="item">
@@ -45,7 +45,7 @@
 		  <div class="carousel-caption">
 			<h3>Interior Santo Spirito, Florence</h3>
 			<p>Filippo Brunelleschi designed church has been call...</p>
-			<p><a class="btn btn-info btn-md" href="single-image.php?id=62" role="button">Learn more</a></p>
+			<p><a href="single-image.php?id=62"><button class="btn btn-info" role="button">Learn more</button></a></p>
 		  </div>
         </div>
       </div>

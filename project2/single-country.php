@@ -8,8 +8,8 @@ $get = $_GET['cId'];
 if( isset($get) && ($get != "") && ctype_alpha($get) && (strlen($get) == 2) ){ $cc = $get; } else { header('Location: error.php'); }
 
 $countryGate = new CountryTableGateway($dbAdapter);
-$country = $countryGate->findById($id);
-$cName = $country->CountryName;
+$pageCountry = $countryGate->findById($get);
+$cName = $pageCountry->CountryName;
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +42,14 @@ $cName = $country->CountryName;
 			<p>Area: <strong><?php echo number_format($pageCountry->Area); ?></strong> sq km</p>
 			<p>Population: <strong><?php  echo number_format($pageCountry->Population); ?></strong></p>
 			<p>Currency Name: <strong><?php echo $pageCountry->CurrencyName; ?></strong></p>
-			<p><?php  echo $pageCountry->CountryDescription; ?></p>
+			<p><?php  echo utf8_encode($pageCountry->CountryDescription); ?></p>
 		</div>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">Images From <?php echo $cName;?></div>
 		  <div class="panel-body">
 				<?php
 					$imgGate = new TravelImageTableGateway($dbAdapter);
-					$result = $imgGate->findForCountry($cId);
+					$result = $imgGate->findForCountry($get);
 					displayImagesThumbnails($result);
 				?>
 		  </div><!--end panel body -->
