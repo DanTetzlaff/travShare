@@ -54,11 +54,12 @@
                  </ul>
                </li>
              </ul>
-			<form class = "navbar-form navbar-right" role="search">
+			 <!--sends search query string to the search.php page for functionality before getting displayed on the search-results page -->
+			<form class = "navbar-form navbar-right" role="search" method="post" action="search.php">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" name="search">
+					<input type="text" class="form-control" placeholder="Search" name="srch">
 				</div>
-				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>				
+				<button class="btn btn-default" type="submit" name = "submit"><i class="glyphicon glyphicon-search"></i></button>		
 			</form>
 		   </div><!--end container -->
         </nav>

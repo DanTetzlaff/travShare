@@ -4,7 +4,7 @@
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
-	print_r($_SESSION['searchString']);
+	$searchResults;
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,18 @@
 				<li class="active">Search</li>
 			</ol>
 			<!--print out search query -->
+			<h4> Results for: <i><?php print($_SESSION['searchString']); ?></i></h4>
 			<!-- print out images results as thumbnails. Hover will display the image description and img is a link to the image's single-image.php page -->
+			<div class = "panel panel-default">
+				<div class = "panel-body">
+					<?php 
+						/**
+							method found in travel-utilities.inc.php and returns thumbnails from the array of images it is given.
+							displayImagesThumbnails($searchResults);
+						**/
+					?>
+				</div>
+			</div>
 		</div> <!-- end main content column -->
 	</div> <!-- end main content row -->
 </div> <!-- end main content container -->

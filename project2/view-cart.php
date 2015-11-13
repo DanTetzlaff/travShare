@@ -4,7 +4,7 @@
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
-	print_r($_SESSION['favimgs']);
+	print_r($_SESSION['img']);
 ?>
 
 <!DOCTYPE html>
