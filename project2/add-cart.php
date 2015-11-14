@@ -16,6 +16,8 @@
 			{
 				array_push($_SESSION['img'], $img);
 			}
+			
+			header('Location: view-cart.php');
 		}
 		else
 		{
