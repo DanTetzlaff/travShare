@@ -115,3 +115,7 @@ footer .nav>li>a {
 .custom > li > a:hover {
     background-color: grey;
 }
+
+.navbar-form .form-group {
+	padding-left: 140px;
+}
