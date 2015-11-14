@@ -77,3 +77,101 @@ footer a:link {
 .postlist p.excerpt {
   margin-top: 0.4em;
 }
+
+#myModal .modal-dialog  
+{
+	width:50%;
+}
+
+img
+{
+	max-width: 100%;
+}
+@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,800,600,700,300);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display+SC);
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,700,800);
+body {
+
+}
+/**
+div#topHeaderRow {
+  background-color: #34495e;
+  height: 3em;
+  font-size: 0.8em;
+  color: #34495e;
+  padding-top: 1em;
+}
+
+div#topHeaderRow  a:link { 
+  color: #BBBBBB ;
+}
+  
+**/
+
+div#topHeaderRow {
+   height: 3em;
+  font-size: 0.8em;
+  color: black;
+  padding-top: 1em;
+}
+
+div #navbar.navbar-default{
+	background-color: #564d4d;
+}
+
+div #navbar.navbar-default a:link, div #navbar-collapse.collapse > ul #nav.navbar-nav a:link{
+	height: 10px;
+}
+
+li a{
+   font-family: 'Alegreya Sans SC','Playfair Display SC', Helvetica, 'Open Sans Condensed';
+   
+}
+
+#navbar-brand:hover{
+	color: #A0D6B4;
+}
+
+footer {
+  background-color: #34495e;
+     color: white;
+}
+
+footer a:link {
+   color: #a3d2f1;
+}
+
+.bottomspacing {
+   margin-bottom: 8px;
+}
+
+#postJumbo {
+   background-image: url(images/post-background.jpg);
+}
+#postJumbo h1 {
+   margin-top: 0;
+}
+
+.postlist h2 {
+  margin-top: 0; 
+}
+
+.postlist div.details {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.postlist p.excerpt {
+  margin-top: 0.4em;
+}
+
+#myModal .modal-dialog  
+{
+	width:50%;
+}
+
+img
+{
+	max-width: 100%;
+}
