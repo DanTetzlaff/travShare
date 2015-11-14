@@ -123,3 +123,10 @@ footer .nav>li>a {
 .panel-body>a {
 	color:#f88379;
 }
+
+.panel-heading {
+	padding: 7px 12px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
