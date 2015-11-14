@@ -25,7 +25,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="img-responsive center-block" src="images/travel/large/9498386718.jpg" alt="First slide">
+          <img class = "img-responsive center-block" src="images/travel/large/9498386718.jpg" alt="First slide">
 		  <div class="carousel-caption">
 			<h3>From St. Peters</h3>
 			<p>This photo was taken at St. Peters</p>
@@ -33,7 +33,7 @@
 		  </div>
         </div>
         <div class="item">
-          <img class="img-responsive center-block" src="images/travel/large/9505536014.jpg" alt="Second slide">
+          <img class = "img-responsive center-block" src="images/travel/large/9505536014.jpg" alt="Second slide">
 		  <div class="carousel-caption">
 			<h3>Pisa - Campasanto</h3>
 			<p>This photo is from Campasanto, Pisa</p>
@@ -41,7 +41,7 @@
 		  </div>
         </div>
         <div class="item">
-          <img class="img-responsive center-block" src="images/travel/large/9504451722.jpg" alt="Third slide">
+          <img class = "img-responsive center-block" src="images/travel/large/9504451722.jpg" alt="Third slide">
 		  <div class="carousel-caption">
 			<h3>Interior Santo Spirito, Florence</h3>
 			<p>Filippo Brunelleschi designed church has been call...</p>

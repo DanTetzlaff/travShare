@@ -41,9 +41,19 @@ li a, footer{
    
 }
 
+img
+{
+	max-width: 100%;
+}
+
 #navbar-brand:hover{
 	color: #A0D6B4;
 }
+
+.carousel-inner > .item > img{
+       width:1170px;
+       height:760px;
+ }
 
 footer {
   background-color: #564d4d;
@@ -83,10 +93,6 @@ footer a:link {
 	width:50%;
 }
 
-img
-{
-	max-width: 100%;
-}
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
             background-image:none !important;
