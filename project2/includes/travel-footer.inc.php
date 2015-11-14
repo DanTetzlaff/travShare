@@ -18,7 +18,7 @@
                  <li><a href="index.php">Home</a></li>
                  <li><a href="aboutus.php">About</a></li>
                  <li><a href="browse.php">Browse</a></li>
-                 <li><a href="#">Search</a></li>
+                 <li><a href="search-results.php">Search</a></li>
                </ul>            
             </nav>               
         </div>
