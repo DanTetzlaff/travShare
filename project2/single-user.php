@@ -4,7 +4,7 @@ require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
 $id = "";
-$get = $_GET['id'];
+$get = $_GET['uid'];
 if(isset($get) && $get != "" && is_numeric($get)){ $id = $get; } else { header('Location: error.php'); }
 
 $userGate = new TravelUserTableGateway($dbAdapter);
@@ -33,7 +33,7 @@ $uName = buildUname($user);
          <ol class="breadcrumb">
            <li><a href="index.php">Home</a></li>
 		   <li><a href="browse.php">Browse</a></li>
-		   <li><a href="browse_users.php">Users</a></li>
+		   <li><a href="browse-users.php">Users</a></li>
 		   <li class='active'><?php echo $uName; ?></li>
 		 </ol>
 		 
