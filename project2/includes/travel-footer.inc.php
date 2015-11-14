@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-md-4">
             <h4>Destinations</h4>
-            <ul class="nav nav-pills nav-stacked">
+            <ul class="nav nav-pills nav-stacked custom">
                  <li><a href="#">Asia</a></li>
                  <li><a href="#">Africa</a></li>
                  <li><a href="#">Europe</a></li>
@@ -14,7 +14,7 @@
         <div class="col-md-4">
             <h4>Links</h4>
             <nav>
-               <ul class="nav nav-pills nav-stacked">
+               <ul class="nav nav-pills nav-stacked custom">
                  <li><a href="index.php">Home</a></li>
                  <li><a href="aboutus.php">About</a></li>
                  <li><a href="browse.php">Browse</a></li>
@@ -26,10 +26,10 @@
             <h4>Connect</h4>
             <hr/>
             <div class="row">
-               <div class="col-md-6">
+               <div class="col-md-5">
                   <button type="button" class="btn btn-primary">Facebook</button>
                </div>
-               <div class="col-md-6">
+               <div class="col-md-5">
                   <button type="button" class="btn btn-info">Twitter</button>
                </div>
             </div>
