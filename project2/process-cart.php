@@ -138,9 +138,25 @@ $frame = "None";
 									$subtotal = computeSubtotal($size, $qty, $stock, $frame);
 									echo '<strong>SUBTOTAL: </strong> $';
 									echo $subtotal;
+									checkShippingCost($subtotal);
 								?>
 						</div>
 					</div>
+					<br/>
+					<div class = "form-group form-group-sm">
+						
+						<div class = "col-sm-offset-3 col-sm-9">
+							<label for="formGroupInputSmall">Shipping: &nbsp;</label>
+							<label class="radio-inline">
+							  <input type="radio" name="ship" id="ship1" value="Standard" checked> Standard Shipping 
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="ship" id="ship2" value="Blond Maple"> Express Shipping
+							</label>							
+						</div>
+					</div>
+					<br/>
+					<br/>
 					<div class = "pull-right">
 						<a href = "#"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
 						<a  href = "index.php"><button class="btn btn-warning"  type = "button" name = "continue">Continue Shopping</button></a>

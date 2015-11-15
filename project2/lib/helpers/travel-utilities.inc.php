@@ -147,5 +147,33 @@ function favImg ($fImg, $dbAdapter) {
 		echo "<li class='list-group-item'>" . $image . " " . generateLink($imageLink, $img->Title, null);
 		echo "<div class='pull-right'><button type='button' class='btn btn-warning btn-xs'>" . generateLink('rm-fav.php?imgId='.$img->ImageID, "Remove", null) . "</button></div></li>";
 	}
+}
+/**
+function processCart ($cartItems, $dbAdapter)
+{
+	$imgGate = new TravelImageTableTableGateway($dbAdapter);
+	
+	foreach($cartItems as $item)
+	{
+		$img = $imgGate->findById($item);
+		$image = '<img src="images/travel/square-small/' . $img->Path . '" alt="' . $img->Title . '" class="img-thumbnail"/>';
+		
+		echo '<div class = "row">';
+		echo '</div>';
+	}
+}
 
+**/
+#to be implemented 
+function computeSubtotal($size, $qty, $stock, $frame)
+{
+	$subtotal = 90;
+	
+	return $subtotal;
+}
+
+function checkShippingCost($subtotal)
+{
+	
+}
 ?>
