@@ -142,9 +142,9 @@ $frame = "None";
 						</div>
 					</div>
 					<div class = "pull-right">
-						<button class="btn btn-success" type="submit" href = "view-cart.php" name = "order">Order</button>	
-						<button class="btn btn-warning" type="submit" name = "continue">Continue Shopping</button>	
-						<button class="btn btn-info" type="submit" name = "update">Update Cart</button>	
+						<a href = "#"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
+						<a  href = "index.php"><button class="btn btn-warning"  type = "button" name = "continue">Continue Shopping</button></a>
+						<a href = "view-cart.php"><button class="btn btn-info"  type = "button" name = "update">Update Cart</button></a>	
 					</div>
 					<br/>
 					<br/>
