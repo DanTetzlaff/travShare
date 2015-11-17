@@ -38,7 +38,7 @@ $gate = new TravelImageTableGateway($dbAdapter);
          </ol>          
     
          <div class="page-header">
-            <h1><?php $title; ?></h1>
+            <h1><?php echo $title; ?></h1>
          </div>  
       
          <div class="row">
