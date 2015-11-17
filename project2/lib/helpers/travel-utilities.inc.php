@@ -13,6 +13,11 @@ function displayImagesThumbnails($images) {
    }
 }
 
+function searchImages($imageGate, $phrase) {
+	$images = null;
+	//$sql = "SELECT TravelImage.ImageID, Title, Path FROM TravelImageDetails INNER JOIN TravelImage ON TravelImage.ImageID = TravelImageDetails.ImageID WHERE Title LIKE '%$phrase%' OR Description LIKE '%$phrase%' OR ;"
+}
+
 function retrieveImages($imagesGate, $city, $country) {
    $images = null;
    if ($_SERVER['REQUEST_METHOD'] == 'GET' && ( isset($city) || isset($country))) {

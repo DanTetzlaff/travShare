@@ -65,7 +65,7 @@ $gate = new TravelImageTableGateway($dbAdapter);
 				</div><!--modal dialog -->
 			</div><!--modal fade -->
 
-               <p><?php echo $travelImage->Description; ?></p>
+               <p><?php echo utf8_encode($travelImage->Description); ?></p>
 
             </div>
             <div class="col-lg-3 col-md-3 col-sm38 col-xs-3"> 
