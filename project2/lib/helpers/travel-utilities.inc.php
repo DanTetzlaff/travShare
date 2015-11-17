@@ -42,7 +42,7 @@ function retrieveImages($imagesGate, $city, $country) {
 
 function generateUserLink($user) {
    $userEncoded =  utf8_encode($user->FirstName . ' ' . $user->LastName) ;
-   return generateLink("single-user.php?id=" . $user->UID,$userEncoded,null);
+   return generateLink("single-user.php?uid=" . $user->UID,$userEncoded,null);
 }
 
 function outputPostRow($post, $dbAdapter)  {
