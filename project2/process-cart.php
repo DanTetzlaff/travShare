@@ -6,10 +6,12 @@
 	
 	if(isset($_SESSION['img']))
 	{
-		#print_r($_SESSION['img']);
+		print_r($_SESSION['img']);
 		
 		processCart($_SESSION['img'], $dbAdapter);
 	}
+	$end = $_GET['img'];
+	//$_POST['img'] = end($end);
 
 $size = 2.50;
 $qty = 1;
@@ -58,19 +60,19 @@ $frame = "None";
 		<div class="col-md-9"> <!-- start main content column -->
 			<ol class="breadcrumb">
 				<li><a href="index.php">Home</a></li>
-				<li class="active">Cart</li>
+				<li class="active">Add to Cart</li>
 			</ol>
 			<div class = "well well-lg">
 			<p> Image Details </p>
-				<form method = "post" class = "horizontal" action = "<?php echo $_SERVER['PHP_SELF']; ?>">
+				<form method = "post" class = "horizontal" action = "update-cart.php">
 					<div class = "form-group form-group-sm">
 						<label class="col-sm-3 control-label" for="formGroupInputSmall">Choose size: </label>
 						<div class = "col-xs-3">
 							<select class="form-control input-sm" name="size">
-								<option value=2.50>8"x10"</option>
-								<option value=0.50>5"x7"</option>
-								<option value=6.00>11"x14"</option>
-								<option value=7.00>12"x18"</option>
+								<option value='8"x10"'>8"x10"</option>
+								<option value='5"x7"'>5"x7"</option>
+								<option value='11"x14"'>11"x14"</option>
+								<option value='12"x18"'>12"x18"</option>
 							</select>
 						</div>
 					</div>
@@ -132,6 +134,14 @@ $frame = "None";
 					<br/>
 					<br/>
 					<br/>
+					<div class = "pull-right">
+						<button class="btn btn-info"  type = "submit" value = "<?php echo $end; ?>" name = "update">Add to Cart</button>
+					</div>
+					<br/>
+					
+					
+					
+					<!--
 					<div class = "form-group form-group-sm">
 						<div class = "col-sm-offset-3 col-sm-9">
 								<?php 
@@ -163,7 +173,7 @@ $frame = "None";
 						<a href = "view-cart.php"><button class="btn btn-info"  type = "button" name = "update">Update Cart</button></a>	
 					</div>
 					<br/>
-					<br/>
+					<br/>-->
 				</form>
 			</div>
 

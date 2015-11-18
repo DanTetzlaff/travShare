@@ -155,8 +155,76 @@ function favImg ($fImg, $dbAdapter) {
 		echo "<div class='pull-right'><button type='button' class='btn btn-warning btn-xs'>" . generateLink('rm-fav.php?imgId='.$img->ImageID, "Remove", null) . "</button></div></li>";
 	}
 }
-/**
-function processCart ($cartItems, $dbAdapter)
+
+function shippingOptions() {
+	$standard = 0;
+	$express = 0;
+	echo "<tr><td> Shipping options: </td><td></td>
+			<form method = 'post' class = 'horizontal' action = 'update-cart.php'>";
+	echo '<div class = "form-group form-group-sm">
+			<div class = "col-sm-offset-3 col-sm-9">
+				
+				<label class="radio-inline">
+					<td><input type="radio" name="ship" id="ship1" value="Standard" checked> Standard Shipping ';
+	echo "($$standard) </label></td>";
+	echo '<td><label class="radio-inline">
+					<input type="radio" name="ship" id="ship2" value="Express"> Express Shipping ';
+	echo "($$express)</label></td>";
+	echo '</div>
+			</div></td><td></td><td></td><td>$0.00</td></tr>';
+}
+
+
+
+function emptyCart() {
+	echo "<tr><td>You have no items in your cart</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>";
+	echo "<tr>
+			<td>Pre-shipping total:</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>$0.00</td>
+			<td></td>
+		</tr>";
+	shippingOptions();
+	echo "</table>";
+}
+
+function processCart($cartItems) {
+	$cartTotal = 0.00;
+	$frameCount = 0;
+	$itemCount = 0;
+	
+	foreach ($cartItems as $item) {
+		$cartTotal += $item->getTotal();
+		$frameCount += $item->countFrames();
+		$itemCount =+ $item->getQuantity();
+		
+		echo "<tr>";
+		$item->cartView();
+		echo "</tr>";
+	}
+	echo "<tr>
+			<td>Pre-shipping total:</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>$frameCount</td>
+			<td>$itemCount</td>
+			<td>$ $cartTotal</td>
+			<td></td>
+		</tr>";
+	shippingOptions();
+	echo "</table>"; 
+}
+
+
+
+
+
+/*function processCart ($cartItems, $dbAdapter)
 {
 	$imgGate = new TravelImageTableTableGateway($dbAdapter);
 	
@@ -170,7 +238,7 @@ function processCart ($cartItems, $dbAdapter)
 	}
 }
 
-**/
+*/
 #to be implemented 
 function computeSubtotal($size, $qty, $stock, $frame)
 {

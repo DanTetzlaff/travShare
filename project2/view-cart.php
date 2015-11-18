@@ -35,8 +35,47 @@
 				<li><a href="index.php">Home</a></li>
 				<li class="active">Cart</li>
 			</ol>
+			
+			<div class="panel panel-default"> <!-- start cart panel -->
+				<div class="panel-heading">
+					Your Cart
+					<div class="pull-right"><button type="button" class="btn btn-info btn-xs"><a href="rm-fav.php?rmAllI=1">Remove All Items</a></button></div>
+				</div>
+				<div class="panel-body">
+			    <table class="table"> <!-- start cart item list -->
+					<tr>
+						<td>Item</td><td> </td>
+						<td>Size</td>
+						<td>Paper Stock </td>
+						<td>Frame</td>
+						<td>Quantity</td>
+						<td>Total</td><td> </td>
+					</tr>
+					
+					<?php 
+						if(!isset ($_SESSION['cartItems']) OR $_SESSION['cartItems'] = null) {
+							emptyCart();
+						}
+						else { processCart($_SESSION['cartItems'], $dbAdapter); }					
+					?>
+					
+				<br/>
+				<br/>
+				<div class = "pull-right">
+					<a href = "#"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
+					<a  href = "index.php"><button class="btn btn-warning"  type = "button" name = "continue">Continue Shopping</button></a>
+					<a href = "view-cart.php"><button class="btn btn-info"  type = "button" name = "update">Update Cart</button></a>	
+				</div>
+				</div>
+			</div> <!-- end cart panel -->
+			
+			
+			
+			
+			
 
-
+			
+			
 		</div> <!-- end main content column -->
 	</div> <!-- end main content row -->
 </div> <!-- end main content container -->

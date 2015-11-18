@@ -17,7 +17,7 @@
 				array_push($_SESSION['img'], $img);
 			}
 			
-			header('Location: view-cart.php');
+			header("Location: process-cart.php?img=$img");
 		}
 		else
 		{
