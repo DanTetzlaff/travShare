@@ -72,6 +72,13 @@ class TravelImageTableGateway extends TableDataGateway
 		$result = $this->dbAdapter->fetchAsArray($sql, Array($countryID));
 		return $this->convertRecordsToObjects($result);
 	}
+	
+	public function findForSearch($phrase)
+	{
+		$sql = "SELECT TravelImage.ImageID, Title, Path FROM TravelImageDetails INNER JOIN TravelImage ON TravelImage.ImageID = TravelImageDetails.ImageID WHERE Title LIKE '%$phrase%' OR Description LIKE '%$phrase%';";
+		$result = $this->dbAdapter->fetchAsArray($sql, Array());
+		return $this->convertRecordsToObjects($result);
+	}
 }
 
 ?>

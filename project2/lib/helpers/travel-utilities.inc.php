@@ -13,9 +13,11 @@ function displayImagesThumbnails($images) {
    }
 }
 
-function searchImages($imageGate, $phrase) {
+function searchImages($dbAdapter, $phrase) {
+	$imagesGate = new TravelImageTableGateway($dbAdapter);
 	$images = null;
-	//$sql = "SELECT TravelImage.ImageID, Title, Path FROM TravelImageDetails INNER JOIN TravelImage ON TravelImage.ImageID = TravelImageDetails.ImageID WHERE Title LIKE '%$phrase%' OR Description LIKE '%$phrase%' OR ;"
+	$images = $imagesGate->findForSearch($phrase);
+	displayImagesThumbnails($images);
 }
 
 function retrieveImages($imagesGate, $city, $country) {

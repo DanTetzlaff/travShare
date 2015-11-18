@@ -35,6 +35,7 @@
 						<input type="text" class="form-control input-lg" placeholder="<?php 
 						if(isset($_SESSION['searchString']) && $_SESSION['searchString'] != "") 
 						{
+					
 							print($_SESSION['searchString']);
 						}
 						else
@@ -53,6 +54,8 @@
 				<div class = "panel panel-default">
 					<div class = "panel-body">
 						<?php 
+							searchImages($dbAdapter, $_SESSION['searchString']);
+							
 							/**
 								method found in travel-utilities.inc.php and returns thumbnails from the array of images it is given.
 								displayImagesThumbnails($searchResults);
