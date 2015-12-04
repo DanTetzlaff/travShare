@@ -16,6 +16,7 @@ $gate = new TravelImageTableGateway($dbAdapter);
 <head>
    <title>Travel Template</title>
    <?php include 'includes/travel-head.inc.php'; ?>
+   <link rel="stylesheet" href="lib/helpers/styles.css" />
 </head>
 <body>
 
