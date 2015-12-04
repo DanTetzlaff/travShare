@@ -156,11 +156,32 @@ function favImg ($fImg, $dbAdapter) {
 	}
 }
 
-function shippingOptions() {
+function shippingOptions($cartTotal, $frameCount) {
 	$standard = 0;
 	$express = 0;
+	$finalTotal = $cartTotal;
+	if ($cartTotal > 300) { } //everything is free
+	else if ($frameCount > 10)
+	{
+		$standard = 30;
+		$express = 45;
+	}
+	else if ($frameCount < 10 && $frameCount > 0)
+	{
+		$standard = 15;
+		$express = 25;
+	}
+	else if ($frameCount == 0)
+	{
+		$standard = 5;
+		$express = 15;
+	}
+	
+	if ($cartTotal > 100) { $standard = 0;}
+	$finalTotal += $standard;
+	
 	echo "<tr><td> Shipping options: </td><td></td>
-			<form method = 'post' class = 'horizontal' action = 'update-cart.php'>";
+			<form method = 'post' class = 'horizontal' action = 'view-cart.php'>";
 	echo '<div class = "form-group form-group-sm">
 			<div class = "col-sm-offset-3 col-sm-9">
 				
@@ -170,8 +191,9 @@ function shippingOptions() {
 	echo '<td><label class="radio-inline">
 					<input type="radio" name="ship" id="ship2" value="Express"> Express Shipping ';
 	echo "($$express)</label></td>";
-	echo '</div>
-			</div></td><td></td><td></td><td>$0.00</td></tr>';
+	
+	echo "</div>
+			</div></td><td></td><td></td><td>$$finalTotal</td></tr>";
 }
 
 
@@ -188,7 +210,7 @@ function emptyCart() {
 			<td>$0.00</td>
 			<td></td>
 		</tr>";
-	shippingOptions();
+	shippingOptions(0, 0);
 	echo "</table>";
 }
 
@@ -216,7 +238,7 @@ function processCart($cartItems) {
 			<td>$ $cartTotal</td>
 			<td></td>
 		</tr>";
-	shippingOptions();
+	shippingOptions($cartTotal, $frameCount);
 	echo "</table>"; 
 }
 

@@ -1,15 +1,16 @@
 <?php
+	include('lib/model/CartItem.class.php');
 	session_start();
 	
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
-	if(isset($_SESSION['img']))
-	{
-		#print_r($_SESSION['img']);
-		
-		processCart($_SESSION['img'], $dbAdapter);
-	}
+
+		//print_r($_SESSION['img']);
+		//print_r($_SESSION['cart']);
+		//processCart($_SESSION['img'], $dbAdapter);
+	
+
 
 
 ?>
@@ -52,12 +53,16 @@
 						<td>Total</td><td> </td>
 					</tr>
 					
-					<?php 
-						if(!isset ($_SESSION['cartItems']) OR $_SESSION['cartItems'] = null) {
-							emptyCart();
-						}
-						else { processCart($_SESSION['cartItems'], $dbAdapter); }					
-					?>
+					<form action="process-cart.php" method="get">
+						<?php 
+							
+							if(!isset($_SESSION['cart'])) {
+								emptyCart();
+							}
+							else { processCart($_SESSION['cart']); }						
+						?>
+					</form>
+					
 					
 				<br/>
 				<br/>

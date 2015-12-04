@@ -1,4 +1,5 @@
 <?php
+	include('lib/model/CartItem.class.php');
 	session_start();
 	
 	require_once('includes/travel-setup.inc.php');
@@ -12,12 +13,14 @@
 			$imgGate = new TravelImageTableGateway($dbAdapter);
 			$travelImage = $imgGate->findById($img);
 			
-			if ($travelImage->ImageID == $img && !in_array($img, $_SESSION['img']))
+			if ($travelImage->ImageID == $img)
 			{
+				$cartItem = new CartItem($img, $travelImage->Path, $travelImage->Title);
 				array_push($_SESSION['img'], $img);
+				array_push($_SESSION['cart'], $cartItem);
 			}
 			
-			header("Location: process-cart.php?img=$img");
+			header("Location: view-cart.php");
 		}
 		else
 		{
