@@ -6,7 +6,7 @@ function displayImagesThumbnails($images) {
             
       echo '<div class="col-md-3">';
       echo '<a href="single-image.php?id=' . $img->ImageID . '" class="thumbnail bottomspacing" >';
-      echo '<img src="images/travel/square/' . $img->Path . '" alt="' . $img->Title . '" title="' . $img->Title . '">';
+      echo '<img class="thumbImg" src="images/travel/square/' . $img->Path . '" alt="' . $img->Title . '" title="' . $img->Title . '">';
       echo '</a>';
       echo '</div>';
 
