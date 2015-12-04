@@ -1,0 +1,22 @@
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+#map {
+        height: 20em;
+		width: 30em;
+		margin-bottom: 1em;
+      }
+	  
+.bigImg{
+	position:absolute;
+	border: inset 8px #564d4d;
+	right: 5em;
+	margin:5px;
+	background-color:#F5DEB3;
+	padding:5px;
+	z-index:99999;
+	border-radius:10px;
+}
