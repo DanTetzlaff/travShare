@@ -67,6 +67,7 @@ $gate = new TravelImageTableGateway($dbAdapter);
 			</div><!--modal fade -->
 
                <p><?php echo utf8_encode($travelImage->Description); ?></p>
+               <div id="map"></div> <!-- Div reserved for javascript Google Map -->
 
             </div>
             <div class="col-lg-3 col-md-3 col-sm38 col-xs-3"> 
@@ -123,15 +124,22 @@ $gate = new TravelImageTableGateway($dbAdapter);
    </div>  <!-- end main content row -->
 </div>   <!-- end main content container -->
    
-<?php include 'includes/travel-footer.inc.php'; ?>   
+<?php include 'includes/travel-footer.inc.php'; ?>
 
-   
-   
+<script type="text/javascript">
+		var imageT = "Location of: <?php echo $title; ?>";
+		var myLatLng = {lat: <?php echo $travelImage->Latitude; ?>, lng: <?php echo $travelImage->Longitude; ?>}
+		//creates variables containing information about the picture for use by map
+</script>
+
  <!-- Bootstrap core JavaScript
  ================================================== -->
  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" language="javascript" src="js/mapJS.js"></script>
  <script src="bootstrap3_travelTheme/assets/js/jquery.js"></script>
  <script src="bootstrap3_travelTheme/dist/js/bootstrap.min.js"></script>
  <script src="bootstrap3_travelTheme/assets/js/holder.js"></script>
+ <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy7ez00AYQ53MjfKefquxd4Fa_UK9il68&signed_in=true&callback=initMap"></script>
 </body>
 </html>
