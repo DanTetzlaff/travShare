@@ -17,6 +17,8 @@ $title = $post->Title;
 <head>
    <title>Travel Template</title>
    <?php include 'includes/travel-head.inc.php'; ?>
+   <script type="text/javascript" language="javascript" src="js/imgPreview.js"></script>
+   <link rel="stylesheet" href="lib/helpers/styles.css" />
 </head>
 <body>
 
