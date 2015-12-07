@@ -3,10 +3,12 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
+// Error checking for GET variables
 $cc = "";
 $get = $_GET['cId'];
 if( isset($get) && ($get != "") && ctype_alpha($get) && (strlen($get) == 2) ){ $cc = $get; } else { header('Location: error.php'); }
 
+// access database information for country based on country table
 $countryGate = new CountryTableGateway($dbAdapter);
 $pageCountry = $countryGate->findById($get);
 $cName = $pageCountry->CountryName;
@@ -50,6 +52,7 @@ $cName = $pageCountry->CountryName;
 		  <div class="panel-heading">Images From <?php echo $cName;?></div>
 		  <div class="panel-body">
 				<?php
+					// gather database information for images to display thumbnails
 					$imgGate = new TravelImageTableGateway($dbAdapter);
 					$result = $imgGate->findForCountry($get);
 					displayImagesThumbnails($result);
