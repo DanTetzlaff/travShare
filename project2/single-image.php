@@ -3,10 +3,12 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
+// Error checking for GET variables for the page
 $id = "";
 $get = $_GET['id'];
 if(isset($get) && $get != "" && is_numeric($get)){ $id = $get; } else { header('Location: error.php'); }
 
+// gather database information for image based on its ID
 $gate = new TravelImageTableGateway($dbAdapter);
  $travelImage = $gate->findById($id);
 ?>
