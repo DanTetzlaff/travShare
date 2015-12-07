@@ -1,3 +1,12 @@
+/*
+Author: Daniel Tetzlaff
+Created: November 2015
+Version: 1.0
+
+Controls the implimentation and styling of google maps 
+*/
+
+// custom styling for a google map object 
 var styles = [
     {
         "featureType": "administrative",
