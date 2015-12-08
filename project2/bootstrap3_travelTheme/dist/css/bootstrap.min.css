@@ -609,12 +609,12 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 .pager .next>a,.pager .next>span{float:right;}
 .pager .previous>a,.pager .previous>span{float:left;}
 .pager .disabled>a,.pager .disabled>a:hover,.pager .disabled>a:focus,.pager .disabled>span{color:#999999;background-color:#ffffff;cursor:not-allowed;}
-.label{display:relative;padding:.2em .6em .2em;font-size:85%;font-weight:normal;line-height:1;color:#ffffff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;}.label[href]:hover,.label[href]:focus{color:#ffffff;text-decoration:none;cursor:pointer;}
+.label{display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:bold;line-height:1;color:#ffffff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;}.label[href]:hover,.label[href]:focus{color:#ffffff;text-decoration:none;cursor:pointer;}
 .label:empty{display:none;}
 .label-default{background-color:#999999;}.label-default[href]:hover,.label-default[href]:focus{background-color:#808080;}
-.label-primary{background-color:#8C9BC8;}.label-primary[href]:hover,.label-primary[href]:focus{background-color:#1d5a83;}
+.label-primary{background-color:#2677ad;}.label-primary[href]:hover,.label-primary[href]:focus{background-color:#1d5a83;}
 .label-success{background-color:#a1ae7b;}.label-success[href]:hover,.label-success[href]:focus{background-color:#428542;}
-.label-info{background-color:#8CC8B9;}.label-info[href]:hover,.label-info[href]:focus{background-color:#217dbb;}
+.label-info{background-color:#3498db;}.label-info[href]:hover,.label-info[href]:focus{background-color:#217dbb;}
 .label-warning{background-color:#d35400;}.label-warning[href]:hover,.label-warning[href]:focus{background-color:#a04000;}
 .label-danger{background-color:#c0392b;}.label-danger[href]:hover,.label-danger[href]:focus{background-color:#962d22;}
 .badge{display:inline-block;min-width:10px;padding:3px 7px;font-size:13px;font-weight:bold;color:#ffffff;line-height:1;vertical-align:baseline;white-space:nowrap;text-align:center;background-color:#34495e;border-radius:10px;}.badge:empty{display:none;}

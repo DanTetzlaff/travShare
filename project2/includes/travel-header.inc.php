@@ -20,9 +20,9 @@
          <div class="pull-right">
             <ul class="list-inline">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+              <li><a href="view-favorites.php"><span class="glyphicon glyphicon-star"></span> Favorites <span class="badge"><?php echo countFav(); ?></span></a></li>
 			  <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-              <li><a href="view-favorites.php"><span class="glyphicon glyphicon-star"></span> Favorites </a><span class="label label-pill label-primary"><?php echo countFav(); ?></span></li>
-			  <li><a href="view-cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart </a><span class="label label-pill label-info"><?php echo countCart(); ?></span></li>
+			  <li><a href="view-cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge"><?php echo countCart(); ?></span></li>
             </ul>         
          </div>
       </div>
