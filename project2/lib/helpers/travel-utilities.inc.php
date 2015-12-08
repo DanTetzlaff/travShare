@@ -1,5 +1,6 @@
 <?php
 
+//print array of images as thumbnails with links to the single image page for each unique image
 function displayImagesThumbnails($images) {
 
    foreach ($images as $img) { 
@@ -116,6 +117,7 @@ function ouputPagination($startNum, $currentNum) {
      
 }
 
+//using user object pull first and last name, combine and encode together, return single string
 function buildUName($user) {
 	$first = $user->FirstName;
 	$last = $user->LastName;
@@ -123,6 +125,7 @@ function buildUName($user) {
 	return utf8_encode($first . ' ' . $last);
 }
 
+//creates list of items in favorite posts list 
 function favPosts ($fPost, $dbAdapter) {	
 	$postGate = new TravelPostTableGateway($dbAdapter);
 	
@@ -141,6 +144,7 @@ function favPosts ($fPost, $dbAdapter) {
 	}
 }
 
+//creates list of items in favorite images list 
 function favImg ($fImg, $dbAdapter) {
 	$imageGate = new TravelImageTableGateway($dbAdapter);
 	

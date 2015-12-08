@@ -3,10 +3,12 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
+//error checking for GET variables
 $id = "";
 $get = $_GET['uid'];
 if(isset($get) && $get != "" && is_numeric($get)){ $id = $get; } else { header('Location: error.php'); }
 
+//pull user information from database
 $userGate = new TravelUserTableGateway($dbAdapter);
 $user = $userGate->findById($id);
 $uName = buildUname($user);

@@ -23,17 +23,16 @@ function showImage(e) {
 	var img = document.createElement('img');
 	var pathA = this.src; // grab source from the original image
 	
-	 // break path up from original to get the file name
-	var path = "images/travel/small/" + pathA.split('/').pop();
+	 
+	var path = "images/travel/small/" + pathA.split('/').pop(); //break path up from original to get the file name
 	
 	// make new path so we can use a small image for the preview
 	img.setAttribute('src', path); 
 	img.setAttribute('class', 'bigImg');
-	// append this to the original image
-	this.parentNode.appendChild(img); 
+	this.parentNode.appendChild(img); // append this to the original image
 }
 
-// remove the preview image by removing the last child appended to the image previews gparent node
+// remove the preview image by removing the last child appended to the image previews parent node
 function removeImage(e) {
 	this.parentNode.removeChild(this.parentNode.childNodes[this.parentNode.childNodes.length -1]);
 }

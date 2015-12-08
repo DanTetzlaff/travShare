@@ -3,10 +3,12 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
+// error checking for GET variables
 $id = "";
 $get = $_GET['id'];
 if(isset($get) && $get != "" && is_numeric($get)){ $id = $get; } else { header('Location: error.php'); }
 
+//pull post information from database
 $postGate = new TravelPostTableGateway($dbAdapter);
 $post = $postGate->findById($id);
 $title = $post->Title;
@@ -84,7 +86,7 @@ $title = $post->Title;
                <div class="panel panel-success">
                  <div class="panel-heading">Social</div>
                  <div class="panel-body">
-                   <p><a href="add-fav.php?favpost=<?php echo $id; ?>" class="btn btn-primary btn-sm">Add to Favorites</a></p>
+                   <p><a href="add-fav.php?favpost=<?php echo $id; ?>" class="btn btn-primary btn-sm">Add to Favorites</a></p> <!-- send user to add-fav page, add image to favs and redirect to favorites page -->
                    <p><a href="view-favorites.php" class="btn btn-success btn-sm">View Favorites</a></p>                  
                  </div>
                </div>    

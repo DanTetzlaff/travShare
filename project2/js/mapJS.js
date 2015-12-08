@@ -125,9 +125,8 @@ function initMap() {
 		//create map object
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	
-	// basic non-style map
-	
-	/*var map = new google.maps.Map(document.getElementById('map'), {
+	/*basic non-style map
+	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 13,
 		center: myLatLng
 	});*/
