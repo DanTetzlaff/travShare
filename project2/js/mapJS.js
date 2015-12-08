@@ -134,6 +134,7 @@ function initMap() {
 
 		//set a marker to be placed on the map at the coordinated of the picture
 	var marker = new google.maps.Marker({
+		icon: 'http://google.com/mapfiles/ms/micons/ltblu-pushpin.png',
 		animation: google.maps.Animation.DROP,
 		position: myLatLng,
 		map: map,
