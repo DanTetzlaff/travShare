@@ -46,6 +46,11 @@ img
 	max-width: 100%;
 }
 
+img.bigImg
+{
+	max-width: 1000%;
+}
+
 #navbar-brand:hover{
 	color: #A0D6B4;
 }

@@ -30,10 +30,10 @@ function showImage(e) {
 	img.setAttribute('src', path); 
 	img.setAttribute('class', 'bigImg');
 	// append this to the original image
-	this.parentNode.parentNode.appendChild(img); 
+	this.parentNode.appendChild(img); 
 }
 
-// remove the preview image by removing the last child appended to the image previews grandparent node
+// remove the preview image by removing the last child appended to the image previews gparent node
 function removeImage(e) {
-	this.parentNode.parentNode.removeChild(this.parentNode.parentNode.childNodes[this.parentNode.parentNode.childNodes.length -1]);
+	this.parentNode.removeChild(this.parentNode.childNodes[this.parentNode.childNodes.length -1]);
 }

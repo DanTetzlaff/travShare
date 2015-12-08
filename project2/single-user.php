@@ -41,7 +41,7 @@ $uName = buildUname($user);
 			<div class='panel-heading'> <!-- Beginning of panel heading -->
 				<h2><?php echo $uName; ?></h2>
 				<p>Address: <strong><?php echo utf8_encode($user->Address); ?></strong></p>
-				<p>City, Country: <strong><?php echo $user->City . ", " . $user->Country; ?></strong></p>
+				<p>City, Country: <strong><?php echo utf8_encode($user->City) . ", " . utf8_encode($user->Country); ?></strong></p>
 				<p>Email: <strong><?php echo $user->Email; ?></strong></p>
 			</div> <!-- End of panel heading -->
 		</div> <!-- End of panel element -->
