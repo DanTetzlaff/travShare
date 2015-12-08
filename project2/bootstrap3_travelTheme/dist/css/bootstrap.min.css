@@ -48,7 +48,7 @@ textarea{overflow:auto;vertical-align:top;}
 table{border-collapse:collapse;border-spacing:0;}
 *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 html{font-size:62.5%;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
-body{font-family:'Open Sans',Verdana,Helvetica,sans-serif;font-size:15px;line-height:1.428571429;color:#555555;background-color:#f6f5f2;}
+body{font-family:'Open Sans',Verdana,Helvetica,sans-serif;font-size:13px;line-height:1.428571429;color:#555555;background-color:#f6f5f2;}
 input,button,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit;}
 button,input,select[multiple],textarea{background-image:none;}
 a{color:black;text-decoration:none;}a:hover,a:focus{color:#1b557a;text-decoration:underline;}
