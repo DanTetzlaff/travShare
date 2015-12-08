@@ -28,7 +28,7 @@ include('lib/helpers/travel-utilities.inc.php');
 		
 		<div class="jumbotron"> <!-- start of jumbotron component -->
 			<h2>About Us</h2>
-			<p>This assignment was created by Carille Mendoza - Cart/Bootstrap design, Daniel Tetzlaff - Google Maps/Image Previews, and Michaela Day - Google analytics. Each person contributed to various parts of this site, however listed is the main item each worked</p>
+			<p>This assignment was created by Carille Mendoza - Cart/Bootstrap design, Daniel Tetzlaff - Google Maps/Image Previews, and Michaela Day - Google analytics. Each person contributed to various parts of this site, however listed is the main item each worked on</p>
 			<p>It was created as a term project for COMP 3512 at Mount Royal University, Taught by Randy Connolly.</p>
 		</div> <!-- end of jumbotron component -->
 
