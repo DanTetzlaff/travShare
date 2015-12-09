@@ -3,21 +3,24 @@
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php');
 
+//pull cities, that have images from them, from database
 $cityGate = new CityTableGateway($dbAdapter);
 $cities = $cityGate->findCitiesWithImages();
 
 
-
+//create gateway for image table on db
 $imagesGate = new TravelImageTableGateway($dbAdapter);
 
 $city = 0;
 $country = "ZZZ";
-if ( isset($_GET['city']) ) {
+if ( isset($_GET['city']) && $_GET['city'] != "" && is_numeric($_GET['city']) ) {
    $city = $_GET['city'];
 }
-if ( isset($_GET['country']) ) {
+if ( isset($_GET['country']) && ($_GET['country'] != "") && ctype_alpha($_GET['country']) && strlen($_GET['country']) == 2 ) {
    $country = $_GET['country'];
 }
+
+//retrieve images using image gateway and info about its city and country
 $images = retrieveImages( $imagesGate, $city, $country ); 
    
 ?>
@@ -53,6 +56,7 @@ $images = retrieveImages( $imagesGate, $city, $country );
                 <select class="form-control" name="city">
                   <option value="0">Filter by City</option>
                  <?php
+				 //create option choices based on cities that have images for filter
                   foreach ($cities as $city) {
 
                      echo '<option value="' . $city->GeoNameID .'" >' . $city->AsciiName . '</option>';
@@ -64,6 +68,7 @@ $images = retrieveImages( $imagesGate, $city, $country );
                 <select class="form-control" name="country">
                   <option value="ZZZ">Filter by Country</option>
                           <?php
+						  //create option choices based on countries that have images for filter select
                            foreach ($countries as $country) {                          
                               echo '<option value="' . $country->ISO  . '" >' . $country->CountryName . '</option>';
                            }

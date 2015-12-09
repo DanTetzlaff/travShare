@@ -24,7 +24,7 @@ function showImage(e) {
 	var pathA = this.src; // grab source from the original image
 	
 	 
-	var path = "images/travel/small/" + pathA.split('/').pop(); //break path up from original to get the file name
+	var path = "images/travel/small/" + pathA.split('/').pop(); //break up path from original to get the file name
 	
 	// make new path so we can use a small image for the preview
 	img.setAttribute('src', path); 
