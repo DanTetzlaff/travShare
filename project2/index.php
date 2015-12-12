@@ -7,6 +7,7 @@
 		session_start();
 		$_SESSION['favposts'] = array();
 		$_SESSION['favimgs'] = array();
+		$_SESSION['img'] = array();
 		$_SESSION['cart'] = array();
 	?>
 </head>

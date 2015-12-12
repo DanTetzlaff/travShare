@@ -160,6 +160,7 @@ function favImg ($fImg, $dbAdapter) {
 	}
 }
 
+<<<<<<< HEAD
 //creates subtotal for each item in the cart
 function processCart($cart)
 {
@@ -197,6 +198,8 @@ function computeSubtotal($cart)
 	return $subtotal;
 }
 
+=======
+>>>>>>> origin/master
 function shippingOptions($cartTotal, $frameCount) {
 	$standard = 0;
 	$express = 0;
@@ -221,8 +224,13 @@ function shippingOptions($cartTotal, $frameCount) {
 	if ($cartTotal > 100) { $standard = 0;}
 	$finalTotal += $standard;
 	
+<<<<<<< HEAD
 	echo "<tr><td></td><td></td><td></td><td></td><td> Shipping options: </td>
 			<form method = 'get' class = 'horizontal' action ='view-cart.php'>";
+=======
+	echo "<tr><td> Shipping options: </td><td></td>
+			<form method = 'post' class = 'horizontal' action = 'view-cart.php'>";
+>>>>>>> origin/master
 	echo '<div class = "form-group form-group-sm">
 			<div class = "col-sm-offset-3 col-sm-9">
 				
@@ -234,7 +242,11 @@ function shippingOptions($cartTotal, $frameCount) {
 	echo "($$express)</label></td>";
 	
 	echo "</div>
+<<<<<<< HEAD
 			</div></td><td><strong>$</strong></td></tr></form>";
+=======
+			</div></td><td></td><td></td><td>$$finalTotal</td></tr>";
+>>>>>>> origin/master
 }
 
 

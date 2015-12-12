@@ -28,7 +28,7 @@ $continents = $continentGate->findAllSorted(true);
   <ul class="list-group">   
      <?php
       foreach ($continents as $cont) {
-         echo '<li class="list-group-item"><a href="#">' . $cont->ContinentName . '</a></li>';
+         echo '<a href="#" class="list-group-item">' . $cont->ContinentName . '</a>';
       }
      ?>
 
@@ -39,7 +39,7 @@ $continents = $continentGate->findAllSorted(true);
   <ul class="list-group">  
      <?php
       foreach ($countries as $country) {
-         echo '<li class="list-group-item"><a href="single-country.php?cId=' . $country->ISO . '">' . $country->CountryName . '</a></li>';
+         echo '<a href="single-country.php?cId=' . $country->ISO . '" class="list-group-item">' . $country->CountryName . '</a>';
       }
      ?>
 

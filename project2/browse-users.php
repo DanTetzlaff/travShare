@@ -42,7 +42,7 @@ $users = $userGateway->findAllSorted(true);
          <?php
 				foreach($users as $user)
 				{
-					 echo '<li class="list-group-item"><a href="single-user.php?uid=' . $user->UID . '">' . utf8_encode($user->FirstName . ' ' . $user->LastName) . '</a></li>';
+					 echo '<a href="single-user.php?uid=' . $user->UID . '" class="list-group-item">' . utf8_encode($user->FirstName . ' ' . $user->LastName) . '</a>';
 				}
          ?>
          </div>

@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_start(); //start session to access favorites arrays
 	
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
@@ -37,7 +37,7 @@
 				</div>
 				<ul class="list-group"> <!-- start favPost panel contents -->
 					<?php 
-						favPosts($_SESSION['favposts'], $dbAdapter); 
+						favPosts($_SESSION['favposts'], $dbAdapter);  //print list of favorite posts
 					?>
 				</ul> <!-- end favPost panel contents -->
 			</div> <!-- end favPost panel -->
@@ -49,7 +49,7 @@
 				</div>
 				<ul class="list-group"> <!-- start favImg panel contents -->
 					<?php
-						favImg($_SESSION['favimgs'], $dbAdapter);
+						favImg($_SESSION['favimgs'], $dbAdapter); //print lists of favorite images
 					?>
 				</ul> <!-- end favImg panel contents -->
 			</div> <!-- end favImg panel -->

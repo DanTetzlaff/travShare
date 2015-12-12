@@ -12,7 +12,7 @@ html, body {
 	  
 .bigImg{
 	position:absolute;
-	border: inset 8px #564d4d;
+	border: outset 8px #564d4d;
 	right: 5em;
 	margin:5px;
 	background-color:#F5DEB3;

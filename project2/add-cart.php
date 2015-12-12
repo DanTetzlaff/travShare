@@ -2,8 +2,12 @@
 /*
 Author: Daniel Tetzlaff
 Created: November 2015
+<<<<<<< HEAD
 Version: 2.0
 Modified: December 2015 by Carille Mendoza 
+=======
+Version: 1.0
+>>>>>>> origin/master
 
 Adds items to a cart array stored in session
 */
@@ -17,7 +21,10 @@ Adds items to a cart array stored in session
 	{
 		$img = $_GET['img'];
 		if ($img != "" && is_numeric($img)) //check if item has a valid id
+<<<<<<< HEAD
 		
+=======
+>>>>>>> origin/master
 		{
 			$imgGate = new TravelImageTableGateway($dbAdapter);
 			$travelImage = $imgGate->findById($img);
@@ -25,9 +32,14 @@ Adds items to a cart array stored in session
 			if ($travelImage->ImageID == $img) //check if item id exists in database
 			{
 				$cartItem = new CartItem($img, $travelImage->Path, $travelImage->Title); // create the cart item to add to array
+<<<<<<< HEAD
 				//array_push($_SESSION['img'], $img);
 				//array_push($_SESSION['cart'], $cartItem);
 				$_SESSION['cart'][] = $cartItem;
+=======
+				array_push($_SESSION['img'], $img);
+				array_push($_SESSION['cart'], $cartItem);
+>>>>>>> origin/master
 			}
 			
 			header("Location: view-cart.php"); //completed processing -> redirect to view cart page

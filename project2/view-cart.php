@@ -5,7 +5,18 @@
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
+<<<<<<< HEAD
 		//print_r($_SESSION['cart']);
+=======
+
+		//print_r($_SESSION['img']);
+		//print_r($_SESSION['cart']);
+		//processCart($_SESSION['img'], $dbAdapter);
+	
+
+
+
+>>>>>>> origin/master
 ?>
 
 <!DOCTYPE html>
@@ -49,15 +60,27 @@
 						<td>Total</td><td> </td>
 					</tr>
 					
+<<<<<<< HEAD
 					<form action="process-cart.php" method="post">
 						<?php 
 							
 							if(!isset($_SESSION['cart'])) {
 								emptyCart();//displays empty cart
+=======
+					<form action="process-cart.php" method="get">
+						<?php 
+							
+							if(!isset($_SESSION['cart'])) {
+								emptyCart();
+>>>>>>> origin/master
 							}
 							else { processCart($_SESSION['cart']); }						
 						?>
 					</form>
+<<<<<<< HEAD
+=======
+					
+>>>>>>> origin/master
 					
 				</table>	
 				<br/>

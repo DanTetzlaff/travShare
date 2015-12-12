@@ -1,3 +1,12 @@
+/*
+Author: Daniel Tetzlaff
+Created: November 2015
+Version: 1.0
+
+Controls the implimentation and styling of google maps 
+*/
+
+// custom styling for a google map object 
 var styles = [
     {
         "featureType": "administrative",
@@ -116,15 +125,15 @@ function initMap() {
 		//create map object
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	
-	// basic non-style map
-	
-	/*var map = new google.maps.Map(document.getElementById('map'), {
+	/*basic non-style map
+	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 13,
 		center: myLatLng
 	});*/
 
 		//set a marker to be placed on the map at the coordinated of the picture
 	var marker = new google.maps.Marker({
+		icon: 'http://google.com/mapfiles/ms/micons/ltblu-pushpin.png',
 		animation: google.maps.Animation.DROP,
 		position: myLatLng,
 		map: map,

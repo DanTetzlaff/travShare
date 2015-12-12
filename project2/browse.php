@@ -35,10 +35,10 @@ include('lib/helpers/travel-utilities.inc.php');
       
          <!-- start post summaries -->
          <div class="listgroup">
-			<li class = "list-group-item"><a href = "browse-countries.php">Countries</a></li>
-			<li class = "list-group-item"><a href = "browse-images.php">Images</a></li>
-			<li class = "list-group-item"><a href = "browse-posts.php">Posts</a></li>
-			<li class = "list-group-item"><a href = "browse-users.php">Users</a></li>
+			<a href="browse-countries.php" class="list-group-item">Countries</a>
+			<a href="browse-images.php" class="list-group-item">Images</a>
+			<a href="browse-posts.php" class="list-group-item">Posts</a>
+			<a href="browse-users.php" class="list-group-item">Users</a>
          </div>
 
       </div>  <!-- end main content column -->
