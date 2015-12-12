@@ -1,5 +1,12 @@
 <?php
-/* Represents one item in the cart */
+/* 
+Author: Michaela Day
+Created: November 2015
+Modified by: Carille Mendoza
+Version: 2.0
+Desc: Represents one item in the cart 
+*/
+
 
 class CartItem {
 
@@ -8,84 +15,187 @@ public $imageSize;
 public $imageQuantity;
 public $imageStock;
 public $imageFrame;
+public $path;
+public $title;
 public $total;
+public $sizePrice;
+public $stockPrice;
+public $framePrice;
 
-function __construct($img, $size, $quantity, $stock, $frame) {
-	$image = $img;
-	$imageSize = $size;
-	$imageQuantity = $quantity;
-	$imageStock = $stock;
-	$imageFrame = $frame;
-	//$total = calculateTotal();
+function __construct($img, $path, $title) {
+	$this->image = $img;
+	$this->imageSize = 0;
+	$this->imageQuantity = 1;
+	$this->imageStock = 0;
+	$this->imageFrame = 0;
+	$this->path = $path;
+	$this->title = $title;
+	$this->total = $this->getTotal();
 }
 
 function getTotal() {
-	return total();
+	$this->total = $this->calculateTotal();
+	return $this->total;
 }
 
 function getQuantity() {
-	return $imageQuantity;
+	return $this->imageQuantity;
 }
 
 function countFrames() {
-	if ($imageFrame = "None") { return 0;}
-	else { return $imageQuantity; }
+	if ($this->imageFrame == 0) { return 0;}
+	else { return $this->imageQuantity; }
 }
-
 function setImageSize($size) {
-	$imageSize = $size;
+	$this->imageSize = $size;
 }
 
 function setImageQuantity($quantity) {
-	$imageQuantity = $quantity;
+	$this->imageQuantity = $quantity;
 }
 
 function setImageStock($stock) {
-	$imageStock = $stock;
+	$this->imageStock = $stock;
 }
 
 function setImageFrame($frame) {
-	$imageFrame = $frame;
+	$this->imageFrame = $frame;
 }
 
-function calculateTotal() {
-	$runningTotal = 0;
-	if ($imageSize = '5"x7"') { $runningTotal += 0.5;}
-	else if ($imageSize = '8"x10"') { $runningTotal += 2.5;}
-	else if ($imageSize = '11"x14"') { $runningTotal += 6.0;}
-	else if ($imageSize = '12"x18"') { $runningTotal += 7.0;}
+//gets the amount based on the size of image chosen
+function calculateSize()
+{
+	switch($this->imageSize)
+	{
+		case 0: $this->sizePrice = 0.5;
+			break;
+		case 1: $this->sizePrice = 2.5;
+			break;
+		case 2: $this->sizePrice = 6.0;
+			break;
+		case 3: $this->sizePrice = 7.0;
+			break;
+	}
 	
-	if($imageStock = "Matte") {}
-	else if ($imageStock = "Glossy" AND $imageSize = '5"x7"' OR $imageSize = '8"x10"' ) { $runningTotal += 0.5;}
-	else if ($imageStock = "Glossy" AND $imageSize = '11"x14"' OR $imageSize = '12"x18"' ) { $runningTotal += 1.0;}
-	else if ($imageStock = "Canvas" AND $imageSize = '5"x7"' OR $imageSize = '8"x10"' ) { $runningTotal += 4.0;}
-	else if ($imageStock = "Canvas" AND $imageSize = '11"x14"' OR $imageSize = '12"x18"' ) { $runningTotal += 8.0;}
-	
-	if ($imageFrame = "None") {}
-	else if ($imageSize = '5"x7"') { $runningTotal += 10.0;}
-	else if ($imageSize = '8"x10"') { $runningTotal += 12.0;}
-	else if ($imageSize = '11"x14"') { $runningTotal += 16.0;}
-	else if ($imageSize = '12"x18"') { $runningTotal += 20.0;}
-	
-	$runningTotal = $runningTotal*$imageQuantity;
-	
-	$total = $runningTotal;
+	return $this->sizePrice;
 }
 
-function cartView() {
-	echo "<td>PIC HERE</td>";
-	echo "<td>TITLE HERE</td>";
-	echo "<td>$imageSize</td>";
-	echo "<td>$imageStock</td>";
-	echo "<td>$imageFrame</td>";
-	echo "<td>$imageQuantity</td>";
-	echo "<td>$total</td>";
-	echo "<td>
-			<a  href = 'index.php'><button class='btn btn-warning'  type = 'button' name = 'remove'>Remove</button></a>
-			<a href = 'process-cart.php'><button class='btn btn-info'  type = 'button' name = 'update'>Update</button></a>
-		</td>";
-
+//calculates stock price depending on image size 
+function calculateStock()
+{
+	if($this->imageSize == 0 || $this->imageSize == 1)
+	{
+		switch($this->imageStock)
+		{
+			case 0: $this->stockPrice = 0;
+				break;
+			case 1: $this->stockPrice = 0.50;
+				break;
+			case 2: $this->stockPrice = 4.0;
+				break;
+		}
+	}
+	else if($this->imageSize == 2)
+	{
+		switch($this->imageStock)
+		{
+			case 0: $this->stockPrice = 0;
+				break;
+			case 1: $this->stockPrice = 1.0;
+				break;
+			case 2: $this->stockPrice = 8.0;
+				break;
+		}
+	}
+	else
+	{
+		$this->stockPrice = 0;
+	}
+	
+	return $this->stockPrice;
 }
 
+function calculateFrame()
+{
+	if($this->imageFrame == 0){$this->framePrice = 0;}
+	else if($this->imageFrame == 1 || $this->imageFrame == 2 || $this->imageFrame == 3 || $this->imageFrame == 4)
+	{
+		if($this->imageSize == 0)
+		{
+			$this->framePrice = 10;
+		}
+		else if($this->imageSize == 1)
+		{
+			$this->framePrice = 12;
+		}
+		else if($this->imageSize == 2)
+		{
+			$this->framePrice = 16;
+		}
+		else
+		{
+			$this->framePrice = 20;
+		}
+	}
+	
+	return $this->framePrice;
 }
+
+function calculateTotal()
+{
+	return ($this->calculateSize() + $this->calculateStock() + $this->calculateFrame()) * $this->imageQuantity;
+}
+
+function displayTinyImage()
+{
+	return "<img src='images/travel/square-tiny/" . $this->path . "'/>";
+}
+
+function displaySizeDropdown()
+{
+	$size1 = '5"x7"';
+	$size2 = '8"x10"';
+	$size3 = '11"x14"';
+	$size4 = '12"x18"';
+	
+	return 
+	"<select class='form-control input-sm' name='itemSize[]'>
+		<option selected value=0>$size1</option>
+		<option value=1>$size2</option>
+		<option value=2>$size3</option>
+		<option value=3>$size4</option>
+	</select>";
+}
+
+function displayStockDropdown()
+{
+	return 
+	"<select class='form-control input-sm' name='itemStock[]'>
+		<option selected value=0>Matte</option>
+		<option value=1>Glossy</option>
+		<option value=2>Canvas</option>
+	</select>";
+}
+
+function displayFrameDropdown()
+{
+	return 
+	"<select class='form-control input-sm' name='itemFrame[]'>
+		<option value=0>None</option>
+		<option value=1>Blonde Maple</option>
+		<option value=2>Expresso Walnut</option>
+		<option value=3>Gold Accent</option>
+		<option value=4>Silver Metal</option>
+	</select>";
+}
+
+
+
+function displayQtyInput()
+{
+	return
+	"<input type = 'number' name = 'itemQty[]' min = '1' max ='100' value = '$this->imageQuantity'>";
+}
+}
+
 ?>

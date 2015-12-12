@@ -1,17 +1,11 @@
 <?php
+	include('lib/model/CartItem.class.php');
 	session_start();
 	
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
-	if(isset($_SESSION['img']))
-	{
-		#print_r($_SESSION['img']);
-		
-		processCart($_SESSION['img'], $dbAdapter);
-	}
-
-
+		//print_r($_SESSION['cart']);
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +13,7 @@
 <head>
 	<title>Travel Template</title>
 	<?php include 'includes/travel-head.inc.php'; ?>
+	<script type="text/javascript" language="javascript" src="js/lab08.js"></script>
 </head>
 <body>
 
@@ -44,7 +39,9 @@
 				<div class="panel-body">
 			    <table class="table"> <!-- start cart item list -->
 					<tr>
-						<td>Item</td><td> </td>
+						<td></td>
+						<td>Item</td>
+						<td></td>
 						<td>Size</td>
 						<td>Paper Stock </td>
 						<td>Frame</td>
@@ -52,19 +49,22 @@
 						<td>Total</td><td> </td>
 					</tr>
 					
-					<?php 
-						if(!isset ($_SESSION['cartItems']) OR $_SESSION['cartItems'] = null) {
-							emptyCart();
-						}
-						else { processCart($_SESSION['cartItems'], $dbAdapter); }					
-					?>
+					<form action="process-cart.php" method="post">
+						<?php 
+							
+							if(!isset($_SESSION['cart'])) {
+								emptyCart();//displays empty cart
+							}
+							else { processCart($_SESSION['cart']); }						
+						?>
+					</form>
 					
+				</table>	
 				<br/>
 				<br/>
 				<div class = "pull-right">
 					<a href = "#"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
 					<a  href = "index.php"><button class="btn btn-warning"  type = "button" name = "continue">Continue Shopping</button></a>
-					<a href = "view-cart.php"><button class="btn btn-info"  type = "button" name = "update">Update Cart</button></a>	
 				</div>
 				</div>
 			</div> <!-- end cart panel -->

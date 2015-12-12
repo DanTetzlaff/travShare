@@ -1,5 +1,6 @@
 <?php
 
+//print array of images as thumbnails with links to the single image page for each unique image
 function displayImagesThumbnails($images) {
 
    foreach ($images as $img) { 
@@ -116,6 +117,7 @@ function ouputPagination($startNum, $currentNum) {
      
 }
 
+//using user object pull first and last name, combine and encode together, return single string
 function buildUName($user) {
 	$first = $user->FirstName;
 	$last = $user->LastName;
@@ -123,6 +125,7 @@ function buildUName($user) {
 	return utf8_encode($first . ' ' . $last);
 }
 
+//creates list of items in favorite posts list 
 function favPosts ($fPost, $dbAdapter) {	
 	$postGate = new TravelPostTableGateway($dbAdapter);
 	
@@ -141,6 +144,7 @@ function favPosts ($fPost, $dbAdapter) {
 	}
 }
 
+//creates list of items in favorite images list 
 function favImg ($fImg, $dbAdapter) {
 	$imageGate = new TravelImageTableGateway($dbAdapter);
 	
@@ -156,26 +160,98 @@ function favImg ($fImg, $dbAdapter) {
 	}
 }
 
-function shippingOptions() {
+//creates subtotal for each item in the cart
+function processCart($cart)
+{
+	foreach($cart as $key => $cartItem)
+	{	
+		echo "<tr class = 'itemRow'>"; 
+		echo "<td><a href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-user'></span> </a></td>";
+		echo "<td class = 'cartItem'>". $cartItem->displayTinyImage() . "</td>";
+		echo "<td class = 'cartItem'>". $cartItem->title . "</td>";
+		echo "<td class = 'cartItem'>" . $cartItem->displaySizeDropdown() . "</td>";
+		echo "<td class = 'cartItem'>" . $cartItem->displayStockDropdown() . "</td>";
+		echo "<td class = 'cartItem'>" . $cartItem->displayFrameDropdown() . "</td>";
+		echo "<td class = 'cartItem'>" . $cartItem->displayQtyInput() . "</td>";
+		echo "<td class = 'cartItem'>$ " . $cartItem->getTotal() . "</td>";	
+		echo "<td><button class='btn btn-success'  type='submit' name='submit' value='$key'>Compute</button></td>";		
+		echo "</tr>";
+	}
+	
+	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
+	$subtotal = computeSubtotal($cart);
+	echo "<td>$ " . $subtotal . "</td>";
+	shippingOptions($subtotal, getFrameCount($cart));
+}
+
+//computes for cart's subtotal before shipping
+function computeSubtotal($cart)
+{
+	$subtotal = 0;
+	
+	foreach($cart as $item)
+	{
+		$subtotal += $item->getTotal();
+	}
+	
+	return $subtotal;
+}
+
+function shippingOptions($cartTotal, $frameCount) {
 	$standard = 0;
 	$express = 0;
-	echo "<tr><td> Shipping options: </td><td></td>
-			<form method = 'post' class = 'horizontal' action = 'update-cart.php'>";
+	$finalTotal = $cartTotal;
+	if ($cartTotal > 300) { } //everything is free
+	else if ($frameCount > 10)
+	{
+		$standard = 30;
+		$express = 45;
+	}
+	else if ($frameCount < 10 && $frameCount > 0)
+	{
+		$standard = 15;
+		$express = 25;
+	}
+	else if ($frameCount == 0)
+	{
+		$standard = 5;
+		$express = 15;
+	}
+	
+	if ($cartTotal > 100) { $standard = 0;}
+	$finalTotal += $standard;
+	
+	echo "<tr><td></td><td></td><td></td><td></td><td> Shipping options: </td>
+			<form method = 'get' class = 'horizontal' action ='view-cart.php'>";
 	echo '<div class = "form-group form-group-sm">
 			<div class = "col-sm-offset-3 col-sm-9">
 				
 				<label class="radio-inline">
-					<td><input type="radio" name="ship" id="ship1" value="Standard" checked> Standard Shipping ';
+					<td><input type="radio" name="ship" type="submit" id="ship1" value="Standard"/> Standard Shipping ';
 	echo "($$standard) </label></td>";
 	echo '<td><label class="radio-inline">
-					<input type="radio" name="ship" id="ship2" value="Express"> Express Shipping ';
+					<input type="radio" name="ship" type="submit" id="ship2" value="Express"/> Express Shipping ';
 	echo "($$express)</label></td>";
-	echo '</div>
-			</div></td><td></td><td></td><td>$0.00</td></tr>';
+	
+	echo "</div>
+			</div></td><td><strong>$</strong></td></tr></form>";
 }
 
 
+//gets total number of frames in cart
+function getFrameCount($cart)
+{
+	$totalFrames = 0;
+	
+	foreach($cart as $item)
+	{
+		$totalFrames += $item->countFrames();
+	}
+	
+	return $totalFrames;
+}
 
+//displays empty cart
 function emptyCart() {
 	echo "<tr><td>You have no items in your cart</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>";
 	echo "<tr>
@@ -188,8 +264,48 @@ function emptyCart() {
 			<td>$0.00</td>
 			<td></td>
 		</tr>";
-	shippingOptions();
+	shippingOptions(0, 0);
 	echo "</table>";
+}
+
+/**
+function getShippingCosts($cart, $subtotal)
+{
+	$standard = 0;
+	$express = 0;
+	$totalFrames = getFrameCount($cart);
+	
+	if($subtotal <= 300)
+	{
+		if($totalFrames == 0)
+		{
+			$standard = 5;
+			$express = 15;
+		}
+		else if($totalFrames < 10)
+		{
+			$standard = 15;
+			$express = 25;
+		}
+		else
+		{
+			$standard = 30;
+			$express = 45;
+		}
+		
+		if($subtotal >= 100)
+		{
+			$standard = 0;
+		}
+	}
+	
+	echo "</tr>";
+	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>";
+	echo "<label class='radio-inline'>
+				<input type='radio' name='shipping' id='ship1' value='standard' checked> Standard Shipping ($$standard)</input></label>
+				<label class='radio-inline'>
+				<input type='radio' name='shipping' id='ship2' value='express'> Express Shipping($$express)</input>
+		</td></tr>";
 }
 
 function processCart($cartItems) {
@@ -216,39 +332,10 @@ function processCart($cartItems) {
 			<td>$ $cartTotal</td>
 			<td></td>
 		</tr>";
-	shippingOptions();
+	shippingOptions($cartTotal, $frameCount);
 	echo "</table>"; 
 }
+**/
 
 
-
-
-
-/*function processCart ($cartItems, $dbAdapter)
-{
-	$imgGate = new TravelImageTableTableGateway($dbAdapter);
-	
-	foreach($cartItems as $item)
-	{
-		$img = $imgGate->findById($item);
-		$image = '<img src="images/travel/square-small/' . $img->Path . '" alt="' . $img->Title . '" class="img-thumbnail"/>';
-		
-		echo '<div class = "row">';
-		echo '</div>';
-	}
-}
-
-*/
-#to be implemented 
-function computeSubtotal($size, $qty, $stock, $frame)
-{
-	$subtotal = 90;
-	
-	return $subtotal;
-}
-
-function checkShippingCost($subtotal)
-{
-	
-}
 ?>
