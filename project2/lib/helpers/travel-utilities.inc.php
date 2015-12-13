@@ -166,7 +166,7 @@ function processCart($cart)
 	foreach($cart as $key => $cartItem)
 	{	
 		echo "<tr class = 'itemRow'>"; 
-		echo "<td class = 'cartItem'><a class = 'removeItem' href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-user'></span> </a></td>";
+		echo "<td class = 'cartItem'><a class = 'removeItem' href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-remove-circle'></span> </a></td>";
 		echo "<td class = 'cartItem'>". $cartItem->displayTinyImage() . "</td>";
 		echo "<td class = 'cartItem'>". $cartItem->title . "</td>";
 		echo "<td class = 'cartItem'>" . $cartItem->displaySizeDropdown() . "</td>";
@@ -180,7 +180,7 @@ function processCart($cart)
 	
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
 	$subtotal = computeSubtotal($cart);
-	echo "<td>$ " . $subtotal . "</td></tr>";
+	echo "<td id = 'runningTotal'>$ " . $subtotal . "</td></tr>";
 	shippingOptions($subtotal, getFrameCount($cart));
 	
 }
@@ -226,23 +226,14 @@ function shippingOptions($cartTotal, $frameCount) {
 	echo"<div class = 'form-group form-group-sm'>
 			<div class = 'col-sm-offset-3 col-sm-9'>
 				<label class='radio-inline'>
-					<td><input type='radio' name='ship' type='submit' id='ship1' value='$standard' checked/> Standard Shipping";
+					<td><input type='radio' name='ship' type='submit' id='ship1' value='$standard'/> Standard Shipping";
 	echo "($$standard) </label></td>";
 	echo "<td><label class='radio-inline'>
 					<input type='radio' name='ship' type='submit' id='ship2' value='$express'/> Express Shipping ";
 	echo "($$express)</label></td>";
-	if(isset($_SESSION['shipping']))
-	{
-		$shipCost = $_SESSION['shipping'];
-	}
-	else
-	{
-		$shipCost = $standard;
-	}
 	echo "</div>
-			</div></td><td><strong>$ $shipCost</strong></td></tr>";
-	$total = $shipCost + $cartTotal;
-	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$ $total</td></tr>";
+			</div></td><td id = 'shipJs'>$0</td></tr>";
+	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$$cartTotal</td></tr>";
 }
 
 
