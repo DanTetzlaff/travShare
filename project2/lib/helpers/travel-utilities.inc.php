@@ -181,11 +181,15 @@ function processCart($cart)
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
 	$subtotal = computeSubtotal($cart);
 	echo "<td id = 'runningTotal'>$ " . $subtotal . "</td></tr>";
+<<<<<<< HEAD
 	
 	//for testing
 	$frames = getFrameCount($cart);
 	echo "<tr><td id = 'frames'>" . $frames . "<td></tr>";
 	shippingOptions($subtotal, $frames);
+=======
+	shippingOptions($subtotal, getFrameCount($cart));
+>>>>>>> origin/master
 	
 }
 

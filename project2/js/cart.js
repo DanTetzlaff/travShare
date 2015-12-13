@@ -10,18 +10,22 @@ function getTotals()
 	var total = document.getElementById("total");
 	total.style.color = "red";
 	
+<<<<<<< HEAD
 	//test values
 	subtotal = getRunningTotal();
 	frames = parseInt(document.getElementById('frames'));
 	getShippingCosts(subtotal, frames);
 	//end test
 	
+=======
+>>>>>>> origin/master
 	var standard = document.getElementById("ship1");
 	setshipCost(standard);
 	var express = document.getElementById("ship2");
 	setshipCost(express);	
 }
 
+<<<<<<< HEAD
 function getRunningTotal()
 {
 	var e = document.getElementById("runningTotal").innerHTML;
@@ -37,6 +41,17 @@ function updateTotal(shipCost)
 	document.getElementById("total").innerHTML = '$' + total;
 }
 
+=======
+//updates the sum total of the cart
+function updateTotal(shipCost)
+{
+	var e = document.getElementById("runningTotal").innerHTML;
+	var subtotal = e.replace("$", '');
+	total = parseFloat(subtotal) + parseFloat(shipCost);
+	document.getElementById("total").innerHTML = '$' + total;
+}
+
+>>>>>>> origin/master
 //adds event listeners to the shipping radio options
 function setshipCost(method)
 {
@@ -80,10 +95,16 @@ function getShippingCosts(subtotal, frames)
 	
 	var stan = document.getElementById('ship1');
 	stan.setAttribute('value', standard);
+<<<<<<< HEAD
 	stan.innerHTML.replace('($)', '$ ' + standard);
 	
 	var exp = document.getElementById('ship2');
 	exp.setAttribute('value', express);
 	exp.innerHTML.replace('($)', '$ ' + express);
 	
+=======
+	setShipCost(stan);
+	stan.innerHTML.replace('($)', '$ ' + standard);
+	
+>>>>>>> origin/master
 }
