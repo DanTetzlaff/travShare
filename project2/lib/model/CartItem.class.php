@@ -115,6 +115,8 @@ function calculateStock()
 	return $this->stockPrice;
 }
 
+
+//calculates frame price based on image size
 function calculateFrame()
 {
 	if($this->imageFrame == 0){$this->framePrice = 0;}
@@ -141,26 +143,42 @@ function calculateFrame()
 	return $this->framePrice;
 }
 
+//calculates item's current total
 function calculateTotal()
 {
 	return ($this->calculateSize() + $this->calculateStock() + $this->calculateFrame()) * $this->imageQuantity;
 }
 
+//displays image of item added to cart
 function displayTinyImage()
 {
 	return "<img src='images/travel/square-tiny/" . $this->path . "'/>";
 }
 
+//for the image size dropdown, ensures formatting
 function displaySizeDropdown()
 {
 	$size1 = '5"x7"';
 	$size2 = '8"x10"';
 	$size3 = '11"x14"';
 	$size4 = '12"x18"';
+	$sized = "";
+	
+	switch($this->imageSize)
+	{
+		case 0: $sized = $size1;
+			break;
+		case 1: $sized = $size2;
+			break;
+		case 2: $sized = $size3;
+			break;
+		case 3: $sized = $size4;
+			break;
+	}
 	
 	return 
 	"<select class='form-control input-sm' id = 'sizeDrop' name='itemSize[]'>
-		<option selected=$this->imageSize>$this->imageSize</option>
+		<option value=$this->imageSize selected = 'selected'>$sized</option>
 		<option value=0>$size1</option>
 		<option value=1>$size2</option>
 		<option value=2>$size3</option>
@@ -168,27 +186,65 @@ function displaySizeDropdown()
 	</select>";
 }
 
+//stock dropdown formatting
 function displayStockDropdown()
 {
+	$stock1 = 'Matte';
+	$stock2 = 'Glossy';
+	$stock3 = 'Canvas';
+	$stocked = "";
+	
+	switch($this->imageStock)
+	{
+		case 0: $stocked = $stock1;
+			break;
+		case 1: $stocked = $stock2;
+			break;
+		case 2: $stocked = $stock3;
+			break;
+	}
 	return 
 	"<select class='form-control input-sm' id = 'stockDrop' name='itemStock[]'>
-		<option selected=$this->imageStock>$this->imageStock</option>
-		<option value=0>Matte</option>
-		<option value=1>Glossy</option>
-		<option value=2>Canvas</option>
+		<option value=$this->imageStock selected = 'selected'>$stocked</option>
+		<option value=0>$stock1</option>
+		<option value=1>$stock2</option>
+		<option value=2>$stock3</option>
 	</select>";
 }
 
+//frame dropdown formatting
 function displayFrameDropdown()
 {
+	$frame1 = 'None';
+	$frame2 = 'Blonde Maple';
+	$frame3 = 'Expresso Walnut';
+	$frame4 = 'Gold Accent';
+	$frame5 = 'Silver Metal';
+	$framed = "";
+	
+	switch($this->imageFrame)
+	{
+		case 0: $framed = $frame1;
+			break;
+		case 1: $framed = $frame2;
+			break;
+		case 2: $framed = $frame3;
+			break;
+		case 3: $framed = $frame4;
+			break;
+		case 4: $framed = $frame5;
+			break;
+			
+	}
+	
 	return 
 	"<select class='form-control input-sm' id = 'frameDrop' name='itemFrame[]'>
-		<option selected=$this->imageFrame>$this->imageFrame</option>
-		<option value=0>None</option>
-		<option value=1>Blonde Maple</option>
-		<option value=2>Expresso Walnut</option>
-		<option value=3>Gold Accent</option>
-		<option value=4>Silver Metal</option>
+		<option value=$this->imageFrame  selected = 'selected'>$framed</option>
+		<option value=0>$frame1</option>
+		<option value=1>$frame2</option>
+		<option value=2>$frame3</option>
+		<option value=3>$frame4</option>
+		<option value=4>$frame5</option>
 	</select>";
 }
 

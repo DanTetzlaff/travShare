@@ -12,16 +12,14 @@
 	$stock =  $_POST['itemStock'];
 	$frame =  $_POST['itemFrame'];
 	$qty =  $_POST['itemQty'];
-	$ship = $_POST['ship'];
-	
-	$_SESSION['shipping'] = $ship;
+
 	$item->setImageSize($size[$key]);
 	$item->setImageStock($stock[$key]);
 	$item->setImageFrame($frame[$key]);
 	$item->setImageQuantity($qty[$key]);
 	$item->getTotal();
 	
-	print_r($_SESSION['shipping']);
+	print_r($_SESSION['cart']);
 	
 	header("Location: view-cart.php");
 ?>
