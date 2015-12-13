@@ -160,14 +160,13 @@ function favImg ($fImg, $dbAdapter) {
 	}
 }
 
-<<<<<<< HEAD
 //creates subtotal for each item in the cart
 function processCart($cart)
 {
 	foreach($cart as $key => $cartItem)
 	{	
 		echo "<tr class = 'itemRow'>"; 
-		echo "<td><a href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-user'></span> </a></td>";
+		echo "<td class = 'cartItem'><a class = 'removeItem' href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-user'></span> </a></td>";
 		echo "<td class = 'cartItem'>". $cartItem->displayTinyImage() . "</td>";
 		echo "<td class = 'cartItem'>". $cartItem->title . "</td>";
 		echo "<td class = 'cartItem'>" . $cartItem->displaySizeDropdown() . "</td>";
@@ -181,8 +180,9 @@ function processCart($cart)
 	
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
 	$subtotal = computeSubtotal($cart);
-	echo "<td>$ " . $subtotal . "</td>";
+	echo "<td>$ " . $subtotal . "</td></tr>";
 	shippingOptions($subtotal, getFrameCount($cart));
+	
 }
 
 //computes for cart's subtotal before shipping
@@ -198,8 +198,6 @@ function computeSubtotal($cart)
 	return $subtotal;
 }
 
-=======
->>>>>>> origin/master
 function shippingOptions($cartTotal, $frameCount) {
 	$standard = 0;
 	$express = 0;
@@ -224,29 +222,27 @@ function shippingOptions($cartTotal, $frameCount) {
 	if ($cartTotal > 100) { $standard = 0;}
 	$finalTotal += $standard;
 	
-<<<<<<< HEAD
-	echo "<tr><td></td><td></td><td></td><td></td><td> Shipping options: </td>
-			<form method = 'get' class = 'horizontal' action ='view-cart.php'>";
-=======
-	echo "<tr><td> Shipping options: </td><td></td>
-			<form method = 'post' class = 'horizontal' action = 'view-cart.php'>";
->>>>>>> origin/master
-	echo '<div class = "form-group form-group-sm">
-			<div class = "col-sm-offset-3 col-sm-9">
-				
-				<label class="radio-inline">
-					<td><input type="radio" name="ship" type="submit" id="ship1" value="Standard"/> Standard Shipping ';
+	echo "<tr><td></td><td></td><td></td><td></td><td> Shipping options: </td>";
+	echo"<div class = 'form-group form-group-sm'>
+			<div class = 'col-sm-offset-3 col-sm-9'>
+				<label class='radio-inline'>
+					<td><input type='radio' name='ship' type='submit' id='ship1' value='$standard' checked/> Standard Shipping";
 	echo "($$standard) </label></td>";
-	echo '<td><label class="radio-inline">
-					<input type="radio" name="ship" type="submit" id="ship2" value="Express"/> Express Shipping ';
+	echo "<td><label class='radio-inline'>
+					<input type='radio' name='ship' type='submit' id='ship2' value='$express'/> Express Shipping ";
 	echo "($$express)</label></td>";
-	
+	if(isset($_SESSION['shipping']))
+	{
+		$shipCost = $_SESSION['shipping'];
+	}
+	else
+	{
+		$shipCost = $standard;
+	}
 	echo "</div>
-<<<<<<< HEAD
-			</div></td><td><strong>$</strong></td></tr></form>";
-=======
-			</div></td><td></td><td></td><td>$$finalTotal</td></tr>";
->>>>>>> origin/master
+			</div></td><td><strong>$ $shipCost</strong></td></tr>";
+	$total = $shipCost + $cartTotal;
+	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$ $total</td></tr>";
 }
 
 
@@ -279,6 +275,7 @@ function emptyCart() {
 	shippingOptions(0, 0);
 	echo "</table>";
 }
+
 
 /**
 function getShippingCosts($cart, $subtotal)

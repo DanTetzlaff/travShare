@@ -5,18 +5,7 @@
 	require_once('includes/travel-setup.inc.php');
 	include('lib/helpers/travel-utilities.inc.php');
 	
-<<<<<<< HEAD
 		//print_r($_SESSION['cart']);
-=======
-
-		//print_r($_SESSION['img']);
-		//print_r($_SESSION['cart']);
-		//processCart($_SESSION['img'], $dbAdapter);
-	
-
-
-
->>>>>>> origin/master
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +13,7 @@
 <head>
 	<title>Travel Template</title>
 	<?php include 'includes/travel-head.inc.php'; ?>
-	<script type="text/javascript" language="javascript" src="js/lab08.js"></script>
+	<script type="text/javascript" language="javascript" src="js/cart.js"></script>
 </head>
 <body>
 
@@ -60,27 +49,15 @@
 						<td>Total</td><td> </td>
 					</tr>
 					
-<<<<<<< HEAD
 					<form action="process-cart.php" method="post">
 						<?php 
 							
 							if(!isset($_SESSION['cart'])) {
 								emptyCart();//displays empty cart
-=======
-					<form action="process-cart.php" method="get">
-						<?php 
-							
-							if(!isset($_SESSION['cart'])) {
-								emptyCart();
->>>>>>> origin/master
 							}
 							else { processCart($_SESSION['cart']); }						
 						?>
 					</form>
-<<<<<<< HEAD
-=======
-					
->>>>>>> origin/master
 					
 				</table>	
 				<br/>
@@ -90,15 +67,7 @@
 					<a  href = "index.php"><button class="btn btn-warning"  type = "button" name = "continue">Continue Shopping</button></a>
 				</div>
 				</div>
-			</div> <!-- end cart panel -->
-			
-			
-			
-			
-			
-
-			
-			
+			</div> <!-- end cart panel -->			
 		</div> <!-- end main content column -->
 	</div> <!-- end main content row -->
 </div> <!-- end main content container -->

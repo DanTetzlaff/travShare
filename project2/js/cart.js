@@ -1,14 +1,15 @@
 window.addEventListener('load', init);
 
 function init() {
-	var items = document.querySelectorAll(".cartItem select");
-	for(i = 0; i < items.length; i++)
-	{
-		items[i].addEventListener("change", recompute);
-		//images[i].addEventListener("mouseout", removeImg);
-	}
+	var total = document.getElementById("total");
+	total.style.color = "red";
 }
 
+function select(e)
+{
+	var sel = document.createElement('option');
+	sel.setAttribute('');
+}
 function recompute(e)
 {
 	this.setAttribute('selected', 'selected');
