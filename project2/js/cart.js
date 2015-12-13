@@ -21,7 +21,7 @@ function updateTotal(shipCost)
 {
 	var e = document.getElementById("runningTotal").innerHTML;
 	var subtotal = e.replace("$", '');
-	total = parseInt(subtotal) + parseInt(shipCost);
+	total = parseFloat(subtotal) + parseFloat(shipCost);
 	document.getElementById("total").innerHTML = '$' + total;
 }
 
