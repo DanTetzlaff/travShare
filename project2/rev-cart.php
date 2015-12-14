@@ -1,4 +1,9 @@
 <?php
+/*
+Author: Carille Mendoza
+Version: 1.5
+Desc: Deals with removes an item from the cart
+*/
 	include('lib/model/CartItem.class.php');
 	session_start();
 

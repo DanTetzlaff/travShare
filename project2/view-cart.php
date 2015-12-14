@@ -1,4 +1,7 @@
 <?php
+/**
+Version: 1.5 - modified cart display
+**/
 	include('lib/model/CartItem.class.php');
 	session_start();
 	
@@ -56,17 +59,18 @@
 							if(!isset($_SESSION['cart'])) {
 								emptyCart();//displays empty cart
 							}
-							else { processCart($_SESSION['cart']); }						
+							else { processCart($_SESSION['cart']); }//handles all cart functions						
 						?>
-					</form>
+					
 					
 				</table>	
 				<br/>
 				<br/>
 				<div class = "pull-right">
 					<a href = "#"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
-					<a  href = "index.php"><button class="btn btn-warning"  type = "button" name = "continue">Continue Shopping</button></a>
+					<a  href = "process-cart.php"><button class="btn btn-warning"  type = "submit" name = "continue">Continue Shopping</button></a>
 				</div>
+				</form>
 				</div>
 			</div> <!-- end cart panel -->			
 		</div> <!-- end main content column -->

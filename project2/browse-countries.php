@@ -1,5 +1,9 @@
 <?php
-
+/**
+Author: Carille Mendoza
+Version: 1.0
+Desc: Landing page of all browse categories
+**/
 require_once('includes/travel-setup.inc.php');
 include('lib/helpers/travel-utilities.inc.php'); 
 

@@ -173,13 +173,13 @@ function processCart($cart)
 		echo "<td>" . $cartItem->displayStockDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayFrameDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayQtyInput() . "</td>";
-		echo "<td class = 'itemTotal'>" . $cartItem->getTotal() . "</td>";		
+		echo "<td class = 'itemTotal'>" . number_format($cartItem->getTotal(),2) . "</td>";		
 		echo "</tr>";
 	}
 	
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
 	$subtotal = computeSubtotal($cart);
-	echo "<td id = 'runningTotal'>$ " . $subtotal . "</td></tr>";
+	echo "<td id = 'runningTotal'>$ " . number_format($subtotal) . "</td></tr>";
 	
 	$frames = getFrameCount($cart);
 	shippingOptions($subtotal, $frames);
@@ -217,7 +217,7 @@ function shippingOptions($cartTotal, $frameCount) {
 		</td>";
 	echo "</div>
 			</div></td><td id = 'shipJs'>$0</td></tr>";
-	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$$cartTotal</td></tr>";
+	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$" . number_format($cartTotal, 2) . "</td></tr>";
 }
 
 
