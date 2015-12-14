@@ -166,22 +166,23 @@ function processCart($cart)
 	foreach($cart as $key => $cartItem)
 	{	
 		echo "<tr class = 'itemRow'>"; 
-		echo "<td class = 'cartItem'><a class = 'removeItem' href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-remove-circle'></span> </a></td>";
-		echo "<td class = 'cartItem'>". $cartItem->displayTinyImage() . "</td>";
-		echo "<td class = 'cartItem'>". $cartItem->title . "</td>";
-		echo "<td class = 'cartItem'>" . $cartItem->displaySizeDropdown() . "</td>";
-		echo "<td class = 'cartItem'>" . $cartItem->displayStockDropdown() . "</td>";
-		echo "<td class = 'cartItem'>" . $cartItem->displayFrameDropdown() . "</td>";
-		echo "<td class = 'cartItem'>" . $cartItem->displayQtyInput() . "</td>";
-		echo "<td class = 'cartItem'>$ " . $cartItem->getTotal() . "</td>";	
-		echo "<td><button class='btn btn-success'  type='submit' name='submit' value='$key'>Compute</button></td>";		
+		echo "<td><a class = 'removeItem' href='rev-cart.php?no=$key'><span class='glyphicon glyphicon-remove-circle'></span> </a></td>";
+		echo "<td>". $cartItem->displayTinyImage() . "</td>";
+		echo "<td>". $cartItem->title . "</td>";
+		echo "<td>" . $cartItem->displaySizeDropdown() . "</td>";
+		echo "<td>" . $cartItem->displayStockDropdown() . "</td>";
+		echo "<td>" . $cartItem->displayFrameDropdown() . "</td>";
+		echo "<td>" . $cartItem->displayQtyInput() . "</td>";
+		echo "<td class = 'itemTotal'>" . $cartItem->getTotal() . "</td>";		
 		echo "</tr>";
 	}
 	
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
 	$subtotal = computeSubtotal($cart);
 	echo "<td id = 'runningTotal'>$ " . $subtotal . "</td></tr>";
-	shippingOptions($subtotal, getFrameCount($cart));
+	
+	$frames = getFrameCount($cart);
+	shippingOptions($subtotal, $frames);
 	
 }
 
@@ -198,39 +199,22 @@ function computeSubtotal($cart)
 	return $subtotal;
 }
 
+//prints out what the cart will look like on the form with temporary values of 0
 function shippingOptions($cartTotal, $frameCount) {
 	$standard = 0;
 	$express = 0;
-	$finalTotal = $cartTotal;
-	if ($cartTotal > 300) { } //everything is free
-	else if ($frameCount > 10)
-	{
-		$standard = 30;
-		$express = 45;
-	}
-	else if ($frameCount < 10 && $frameCount > 0)
-	{
-		$standard = 15;
-		$express = 25;
-	}
-	else if ($frameCount == 0)
-	{
-		$standard = 5;
-		$express = 15;
-	}
-	
-	if ($cartTotal > 100) { $standard = 0;}
-	$finalTotal += $standard;
-	
+
 	echo "<tr><td></td><td></td><td></td><td></td><td> Shipping options: </td>";
 	echo"<div class = 'form-group form-group-sm'>
 			<div class = 'col-sm-offset-3 col-sm-9'>
-				<label class='radio-inline'>
-					<td><input type='radio' name='ship' type='submit' id='ship1' value='$standard'/> Standard Shipping";
-	echo "($$standard) </label></td>";
-	echo "<td><label class='radio-inline'>
-					<input type='radio' name='ship' type='submit' id='ship2' value='$express'/> Express Shipping ";
-	echo "($$express)</label></td>";
+					<td>
+						<label class='radio-inline'>
+							<input type='radio' name='ship' type='submit' id='ship1' value='$standard'/><div id = 'std'> Standard Shipping($0)</div></label>
+					</td>";
+	echo "<td>
+			<label class='radio-inline'>
+				<input type='radio' name='ship' type='submit' id='ship2' value='$express'/><div id = 'expr'>Express Shipping($$express)</div></label>
+		</td>";
 	echo "</div>
 			</div></td><td id = 'shipJs'>$0</td></tr>";
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$$cartTotal</td></tr>";
@@ -266,76 +250,6 @@ function emptyCart() {
 	shippingOptions(0, 0);
 	echo "</table>";
 }
-
-
-/**
-function getShippingCosts($cart, $subtotal)
-{
-	$standard = 0;
-	$express = 0;
-	$totalFrames = getFrameCount($cart);
-	
-	if($subtotal <= 300)
-	{
-		if($totalFrames == 0)
-		{
-			$standard = 5;
-			$express = 15;
-		}
-		else if($totalFrames < 10)
-		{
-			$standard = 15;
-			$express = 25;
-		}
-		else
-		{
-			$standard = 30;
-			$express = 45;
-		}
-		
-		if($subtotal >= 100)
-		{
-			$standard = 0;
-		}
-	}
-	
-	echo "</tr>";
-	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>";
-	echo "<label class='radio-inline'>
-				<input type='radio' name='shipping' id='ship1' value='standard' checked> Standard Shipping ($$standard)</input></label>
-				<label class='radio-inline'>
-				<input type='radio' name='shipping' id='ship2' value='express'> Express Shipping($$express)</input>
-		</td></tr>";
-}
-
-function processCart($cartItems) {
-	$cartTotal = 0.00;
-	$frameCount = 0;
-	$itemCount = 0;
-	
-	foreach ($cartItems as $item) {
-		$cartTotal += $item->getTotal();
-		$frameCount += $item->countFrames();
-		$itemCount =+ $item->getQuantity();
-		
-		echo "<tr>";
-		$item->cartView();
-		echo "</tr>";
-	}
-	echo "<tr>
-			<td>Pre-shipping total:</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>$frameCount</td>
-			<td>$itemCount</td>
-			<td>$ $cartTotal</td>
-			<td></td>
-		</tr>";
-	shippingOptions($cartTotal, $frameCount);
-	echo "</table>"; 
-}
-**/
 
 
 ?>
