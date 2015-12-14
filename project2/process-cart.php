@@ -14,6 +14,13 @@ Desc: Currently saving each cart item's state via php
 	$size =  $_POST["itemSize"];//print_r($array)
 	$stock =  $_POST['itemStock'];
 	$frame =  $_POST['itemFrame'];
+	$qty = $_POST['itemQty'];
+	
+	if(isset($_POST['ship']))
+	{
+		$shipCost  = $_POST['ship'];
+		print_r($shipCost);
+	}
 	
 	//print_r($size);
 	//print_r($stock);
