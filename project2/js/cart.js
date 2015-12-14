@@ -6,6 +6,7 @@ Version: 1.0
 Created: December 2015
 This file performs all the javascript functionality needed to autoupdate the cart
 -- Totally works... just don't know how I made it work *pterodactyl screech*
+Timecheck: &;19 and my life is not a total disaster
 **/
 
 
@@ -16,11 +17,26 @@ function init() {
 	{
 		watch[w].addEventListener("change", function(){
 			var selOption = this.options[this.selectedIndex];
-			alert("itemIndex:" + w + "val" + selOption.value + "type" + selOption.getAttribute('class'));
+			//alert("itemIndex:" + w + "val" + selOption.value + "type" + selOption.getAttribute('class'));
+			changeSelectedValue(selOption);
+			getTotals();
 		});
 	}
 	
-	getTotals();
+	var qties = document.getElementsByClassName("quantities");
+	for(d = 0; d < qties.length; d++)
+	{
+		qties[d].addEventListener("change", function(){getTotals()});
+	}
+}
+
+function changeSelectedValue(selOption)
+{
+	var newVal = selOption.value;
+	var newDesc = selOption.innerText;
+	selOption.parentNode.options[0].value = parseInt(newVal);
+	selOption.parentNode.options[0].innerText = newDesc;
+	//alert(selOption.parentNode.options[0].innerText);
 }
 
 //computes for cart item total
@@ -48,7 +64,7 @@ function getTotals()
 		framePrice = calculateFrame(frame,size);
 	
 		total = computeItemTotal(sizePrice, stockPrice, framePrice, quant);
-		totals[s].innerHTML = '$ ' + total;
+		totals[s].innerHTML = numeral(total).format('$0,0.00');
 	}
 	computeItemTotal(sizePrice, stockPrice, framePrice, qty);
 	computeShopping();
@@ -190,7 +206,7 @@ function getRunningTotal()
 		item = parseFloat(itemTotals[i].innerHTML.replace("$", ''));
 		runTotal += item;
 	}
-	document.getElementById("runningTotal").innerHTML = '$' + runTotal;
+	document.getElementById("runningTotal").innerHTML = numeral(runTotal).format('$0,0.00');
 	return runTotal;
 	
 }
@@ -201,7 +217,7 @@ function updateTotal(shipCost)
 	var e = document.getElementById("runningTotal").innerHTML;
 	var subtotal = e.replace("$", '');
 	total = parseFloat(subtotal) + parseFloat(shipCost);
-	document.getElementById("total").innerHTML = '$' + total;
+	document.getElementById("total").innerHTML = numeral(total).format('$0,0.00');
 }
 
 //adds event listeners to the shipping radio options
@@ -216,7 +232,7 @@ function setCost(e)
 {
 	var elem = document.getElementById("shipJs");
 	var shipCost = this.value;
-	elem.innerHTML = '<strong> $' + shipCost + '</strong>';
+	elem.innerHTML = '<strong>' + numeral(shipCost).format('$0,0.00') + '</strong>';
 	updateTotal(shipCost);
 }
 
@@ -256,4 +272,17 @@ function getShippingCosts(subtotal, frames)
 	exp.setAttribute('value', express);
 	expText = document.getElementById("expr");
 	expText.innerHTML = 'Express Shipping($' + express + ')';
+}
+
+function saveState()
+{
+	var sizes = document.getElementsByClassName("sizes");
+	var stocks = document.getElementsByClassName("stocks");
+	var frames = document.getElementsByClassName("frames");
+	var qty = document.getElementsByClassName("quantities");
+	
+	for(i = 0; i < sizes.length; i++)
+	{
+		
+	}
 }

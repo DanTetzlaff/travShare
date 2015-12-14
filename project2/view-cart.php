@@ -14,6 +14,7 @@
 	<title>Travel Template</title>
 	<?php include 'includes/travel-head.inc.php'; ?>
 	<script type="text/javascript" language="javascript" src="js/cart.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
 </head>
 <body>
 

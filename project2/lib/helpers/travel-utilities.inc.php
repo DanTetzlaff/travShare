@@ -173,8 +173,7 @@ function processCart($cart)
 		echo "<td>" . $cartItem->displayStockDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayFrameDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayQtyInput() . "</td>";
-		echo "<td class = 'itemTotal'>$0</td>";	
-		//echo "<td><button class='btn btn-success'  type='submit' name='submit' value='$key'>Compute</button></td>";		
+		echo "<td class = 'itemTotal'>$0</td>";		
 		echo "</tr>";
 	}
 	
@@ -183,9 +182,6 @@ function processCart($cart)
 	echo "<td id = 'runningTotal'>$ " . $subtotal . "</td></tr>";
 	
 	$frames = getFrameCount($cart);
-	/**test
-	echo "<tr><td id = 'totFrames'>" . $frames . "<td></tr>";
-	end**/
 	shippingOptions($subtotal, $frames);
 	
 }
