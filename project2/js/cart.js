@@ -68,7 +68,10 @@ function getTotals()
 	}
 	computeItemTotal(sizePrice, stockPrice, framePrice, qty);
 	computeShopping();
+<<<<<<< HEAD
 	updateTotal(0);
+=======
+>>>>>>> origin/master
 }
 
 //based on size price, frame price, quantity, and stock price, computes for item total

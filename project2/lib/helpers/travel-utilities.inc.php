@@ -173,7 +173,11 @@ function processCart($cart)
 		echo "<td>" . $cartItem->displayStockDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayFrameDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayQtyInput() . "</td>";
+<<<<<<< HEAD
 		echo "<td class = 'itemTotal'>" . $cartItem->getTotal() . "</td>";		
+=======
+		echo "<td class = 'itemTotal'>$0</td>";		
+>>>>>>> origin/master
 		echo "</tr>";
 	}
 	
@@ -191,10 +195,10 @@ function computeSubtotal($cart)
 {
 	$subtotal = 0;
 	
-	foreach($cart as $item)
-	{
-		$subtotal += $item->getTotal();
-	}
+	//foreach($cart as $item)
+	//{
+	//	$subtotal += $item->getTotal();
+	//}
 	
 	return $subtotal;
 }
@@ -226,10 +230,10 @@ function getFrameCount($cart)
 {
 	$totalFrames = 0;
 	
-	foreach($cart as $item)
-	{
-		$totalFrames += $item->countFrames();
-	}
+	//foreach($cart as $item)
+	//{
+	//	$totalFrames += $item->countFrames();
+	//}
 	
 	return $totalFrames;
 }
