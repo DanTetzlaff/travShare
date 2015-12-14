@@ -173,11 +173,7 @@ function processCart($cart)
 		echo "<td>" . $cartItem->displayStockDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayFrameDropdown() . "</td>";
 		echo "<td>" . $cartItem->displayQtyInput() . "</td>";
-<<<<<<< HEAD
 		echo "<td class = 'itemTotal'>" . $cartItem->getTotal() . "</td>";		
-=======
-		echo "<td class = 'itemTotal'>$0</td>";		
->>>>>>> origin/master
 		echo "</tr>";
 	}
 	
