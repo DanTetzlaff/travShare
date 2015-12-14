@@ -177,12 +177,12 @@ function displaySizeDropdown()
 	}
 	
 	return 
-	"<select class='form-control input-sm' id = 'sizeDrop' name='itemSize[]'>
-		<option value=$this->imageSize selected = 'selected'>$sized</option>
-		<option value=0>$size1</option>
-		<option value=1>$size2</option>
-		<option value=2>$size3</option>
-		<option value=3>$size4</option>
+	"<select class='form-control input-sm cartItem' id = 'sizeDrop' name='itemSize[]'>
+		<option class = 'sizes' value=$this->imageSize selected = 'selected'>$sized</option>
+		<option class = 'size' value=0>$size1</option>
+		<option class = 'size' value=1>$size2</option>
+		<option class = 'size' value=2>$size3</option>
+		<option class = 'size' value=3>$size4</option>
 	</select>";
 }
 
@@ -204,11 +204,11 @@ function displayStockDropdown()
 			break;
 	}
 	return 
-	"<select class='form-control input-sm' id = 'stockDrop' name='itemStock[]'>
-		<option value=$this->imageStock selected = 'selected'>$stocked</option>
-		<option value=0>$stock1</option>
-		<option value=1>$stock2</option>
-		<option value=2>$stock3</option>
+	"<select class='form-control input-sm cartItem' id = 'stockDrop' name='itemStock[]'>
+		<option class = 'stocks' value=$this->imageStock selected = 'selected'>$stocked</option>
+		<option class = 'stock' value=0>$stock1</option>
+		<option class = 'stock' value=1>$stock2</option>
+		<option class = 'stock' value=2>$stock3</option>
 	</select>";
 }
 
@@ -238,13 +238,13 @@ function displayFrameDropdown()
 	}
 	
 	return 
-	"<select class='form-control input-sm' id = 'frameDrop' name='itemFrame[]'>
-		<option value=$this->imageFrame  selected = 'selected'>$framed</option>
-		<option value=0>$frame1</option>
-		<option value=1>$frame2</option>
-		<option value=2>$frame3</option>
-		<option value=3>$frame4</option>
-		<option value=4>$frame5</option>
+	"<select class='form-control input-sm frameDrop cartItem' name='itemFrame[]'>
+		<option class = 'chosenFrame' value=$this->imageFrame  selected = 'selected'>$framed</option>
+		<option class = 'frame' value=0>$frame1</option>
+		<option class = 'frame' value=1>$frame2</option>
+		<option class = 'frame' value=2>$frame3</option>
+		<option class = 'frame' value=3>$frame4</option>
+		<option class = 'frame' value=4>$frame5</option>
 	</select>";
 }
 
@@ -253,7 +253,7 @@ function displayFrameDropdown()
 function displayQtyInput()
 {
 	return
-	"<input type = 'number' name = 'itemQty[]' min = '1' max ='100' value = '$this->imageQuantity'>";
+	"<input type = 'number' id = 'itemQty' class = 'quantities' name = 'itemQty[]' min = '1' max ='100' value=$this->imageQuantity>";
 }
 }
 

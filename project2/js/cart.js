@@ -1,47 +1,200 @@
 window.addEventListener('load', init);
 
+/**
+Author: Carille Mendoza
+Version: 1.0
+Created: December 2015
+This file performs all the javascript functionality needed to autoupdate the cart
+-- Totally works... just don't know how I made it work *pterodactyl screech*
+**/
+
+
 function init() {
 
+	var watch = document.getElementsByClassName("cartItem");
+	for(w = 0; w < watch.length; w++)
+	{
+		watch[w].addEventListener("change", function(){
+			var selOption = this.options[this.selectedIndex];
+			alert("itemIndex:" + w + "val" + selOption.value + "type" + selOption.getAttribute('class'));
+		});
+	}
+	
 	getTotals();
 }
 
+//computes for cart item total
 function getTotals()
+{
+	var sizePrice = 0;
+	var stockPrice = 0;
+	var framePrice = 0;
+	var qty = 0;
+	
+	var sizes = document.getElementsByClassName("sizes");
+	var stocks = document.getElementsByClassName("stocks");
+	var frames = document.getElementsByClassName("chosenFrame");
+	var quantts = document.getElementsByClassName("quantities");
+	var totals = document.getElementsByClassName("itemTotal");
+	for(s = 0; s < sizes.length; s++)
+	{
+		size = parseInt(sizes[s].value);
+		stock = parseInt(stocks[s].value);
+		frame = parseInt(frames[s].value);
+		quant = parseInt(quantts[s].value);
+		
+		sizePrice = calculateSize(size);
+		stockPrice = calculateStock(size, stock);
+		framePrice = calculateFrame(frame,size);
+	
+		total = computeItemTotal(sizePrice, stockPrice, framePrice, quant);
+		totals[s].innerHTML = '$ ' + total;
+	}
+	computeItemTotal(sizePrice, stockPrice, framePrice, qty);
+	computeShopping();
+}
+
+//based on size price, frame price, quantity, and stock price, computes for item total
+function computeItemTotal(sizePrice, stockPrice, framePrice, qty)
+{
+	return (sizePrice + stockPrice + framePrice) * qty;
+}
+
+//get the price of the picking the image size
+function calculateSize(size)
+{
+	var sizePrice = 0;
+	switch(size)
+	{
+		case 0: sizePrice = 0.5;
+			break;
+		case 1: sizePrice = 2.5;
+			break;
+		case 2: sizePrice = 6.0;
+			break;
+		case 3: sizePrice = 7.0;
+			break;
+	}
+	
+	return sizePrice;
+}
+
+
+//calculates stock price of item based on image size and what image stock was chosen by user
+function calculateStock(size, stock)
+{
+	var stockPrice = 0;
+	if(size == 0 || size == 1)
+	{
+		switch(stock)
+		{
+			case 0: stockPrice = 0;
+				break;
+			case 1: stockPrice = 0.50;
+				break;
+			case 2: stockPrice = 4.0;
+				break;
+		}
+	}
+	else if(size == 2)
+	{
+		switch(stock)
+		{
+			case 0: stockPrice = 0;
+				break;
+			case 1: stockPrice = 1.0;
+				break;
+			case 2: stockPrice = 8.0;
+				break;
+		}
+	}
+	else
+	{
+		stockPrice = 0;
+	}
+	
+	return stockPrice;
+}
+
+//calculates frame price of item based on what frame is chosen and the size of the image
+function calculateFrame(frame, size)
+{
+	var framePrice = 0;
+	if(frame == 0){framePrice = 0;}
+	else if(frame == 1 || frame == 2 || frame == 3 || frame == 4)
+	{
+		if(size == 0)
+		{
+			framePrice = 10;
+		}
+		else if(size == 1)
+		{
+			framePrice = 12;
+		}
+		else if(size == 2)
+		{
+			framePrice = 16;
+		}
+		else
+		{
+			framePrice = 20;
+		}
+	}
+	
+	return framePrice;
+}
+
+//gets subtotal and number of frames and computes for shopping total
+function computeShopping()
 {
 	var total = document.getElementById("total");
 	total.style.color = "red";
-	
-<<<<<<< HEAD
-	//test values
+
 	subtotal = getRunningTotal();
-	frames = parseInt(document.getElementById('frames'));
-	getShippingCosts(subtotal, frames);
-	//end test
+	getShippingCosts(subtotal, getFrames());
 	
-=======
->>>>>>> origin/master
-	var standard = document.getElementById("ship1");
-	setshipCost(standard);
-	var express = document.getElementById("ship2");
-	setshipCost(express);	
+	var std = document.getElementById("ship1");
+	setshipCost(std);
+	var exr = document.getElementById("ship2");
+	setshipCost(exr);	
 }
 
-<<<<<<< HEAD
+//gets total number of frames in the cart
+function getFrames()
+{
+	var itemFrames = 0;
+	var frames = document.getElementsByClassName("chosenFrame");
+	var qtts = document.getElementsByClassName("quantities");
+	for(f = 0; f < frames.length; f++)
+	{
+		var chosenFrame = frames[f].value;
+		if(chosenFrame != 0)
+		{
+			itemFrames += parseInt(qtts[f].value);
+		}
+	}
+	
+	//test
+	//document.getElementById("totFrames").innerHTML = itemFrames;
+	//end
+	return itemFrames;
+}
+
+//gets running total based on all items in the cart
 function getRunningTotal()
 {
-	var e = document.getElementById("runningTotal").innerHTML;
-	var subtotal = e.replace("$", '');
-	return subtotal;
+	var runTotal = 0;
+	var itemTotals = document.getElementsByClassName("itemTotal");
+	for(i = 0; i < itemTotals.length; i++)
+	{
+		item = parseFloat(itemTotals[i].innerHTML.replace("$", ''));
+		runTotal += item;
+	}
+	document.getElementById("runningTotal").innerHTML = '$' + runTotal;
+	return runTotal;
+	
 }
 
-//updates the sum total of the cart
-function updateTotal(shipCost)
-{
-	subtotal = getRunningTotal();
-	total = parseInt(subtotal) + parseInt(shipCost);
-	document.getElementById("total").innerHTML = '$' + total;
-}
-
-=======
 //updates the sum total of the cart
 function updateTotal(shipCost)
 {
@@ -51,7 +204,6 @@ function updateTotal(shipCost)
 	document.getElementById("total").innerHTML = '$' + total;
 }
 
->>>>>>> origin/master
 //adds event listeners to the shipping radio options
 function setshipCost(method)
 {
@@ -68,6 +220,7 @@ function setCost(e)
 	updateTotal(shipCost);
 }
 
+//computes for standard and express shipping costs based on cart total and frames on cart
 function getShippingCosts(subtotal, frames)
 {
 	var standard = 0;
@@ -93,18 +246,14 @@ function getShippingCosts(subtotal, frames)
 	if (subtotal > 100) { standard = 0;}
 	finalTotal += standard;
 	
-	var stan = document.getElementById('ship1');
+	var stan = document.getElementById("ship1");
 	stan.setAttribute('value', standard);
-<<<<<<< HEAD
-	stan.innerHTML.replace('($)', '$ ' + standard);
+	repText = document.getElementById("std");
+	repText.innerHTML = 'Standard Shipping($' + standard + ')';
+	
 	
 	var exp = document.getElementById('ship2');
 	exp.setAttribute('value', express);
-	exp.innerHTML.replace('($)', '$ ' + express);
-	
-=======
-	setShipCost(stan);
-	stan.innerHTML.replace('($)', '$ ' + standard);
-	
->>>>>>> origin/master
+	expText = document.getElementById("expr");
+	expText.innerHTML = 'Express Shipping($' + express + ')';
 }
