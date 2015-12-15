@@ -179,7 +179,7 @@ function processCart($cart)
 	
 	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>Total before shipping:</strong></td>";
 	$subtotal = computeSubtotal($cart);
-	echo "<td id = 'runningTotal'>$ " . number_format($subtotal,2) . "</td></tr>";
+	echo "<input type ='hidden' name='rT' value='' id='rT'><td id = 'runningTotal'>$ " . number_format($_SESSION['rT'],2) . "</td></input></tr>";
 	
 	$frames = getFrameCount($cart);
 	shippingOptions($subtotal, $frames);
@@ -216,8 +216,8 @@ function shippingOptions($cartTotal, $frameCount) {
 				<input type='radio' name='ship' type='submit' id='ship2' value='$express'/><div id = 'expr'>Express Shipping($$express)</div></label>
 		</td>";
 	echo "</div>
-			</div></td><td id = 'shipJs'>$" . number_format(0,2) . "</td></tr>";
-	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><td id ='total'>$" . number_format($cartTotal,2) . "</td></tr>";
+			</div></td><input type='hidden' value ='' name='shipC' id='shipC'><td id = 'shipJs'>$" . number_format($_SESSION['shipCost'],2) . "</td></input></tr>";
+	echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Total:</td><input type='hidden' name='tot' value='' id='tot'><td id ='total'>$" . number_format($_SESSION["tot"],2) . "</td></input></tr>";
 }
 
 

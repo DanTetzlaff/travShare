@@ -9,6 +9,9 @@
 		$_SESSION['favimgs'] = array();
 		$_SESSION['img'] = array();
 		$_SESSION['cart'] = array();
+		$_SESSION["shipCost"] = 0; //maintains shipping cost after continue shopping button
+		$_SESSION["rT"] = 0;//maintains running total after continue shopping button
+		$_SESSION["tot"] = 0;//maintains total after continue shopping button
 	?>
 </head>
 

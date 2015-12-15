@@ -38,7 +38,7 @@ Version: 1.5 - modified cart display
 			<div class="panel panel-default"> <!-- start cart panel -->
 				<div class="panel-heading">
 					Your Cart
-					<div class="pull-right"><button type="button" class="btn btn-info btn-xs"><a href="rm-fav.php?rmAllI=1">Remove All Items</a></button></div>
+					<div class="pull-right"><button type="button" class="btn btn-info btn-xs"><a href="rev-cart.php?no=1001">Remove All Items</a></button></div>
 				</div>
 				<div class="panel-body">
 			    <table class="table"> <!-- start cart item list -->
@@ -53,7 +53,7 @@ Version: 1.5 - modified cart display
 						<td>Total</td><td> </td>
 					</tr>
 					
-					<form action="process-cart.php" method="post">
+					<form action="process-cart.php?rdr=0" method="post">
 						<?php 
 							
 							if(!isset($_SESSION['cart'])) {
@@ -67,8 +67,8 @@ Version: 1.5 - modified cart display
 				<br/>
 				<br/>
 				<div class = "pull-right">
-					<a href = "#"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
-					<a  href = "process-cart.php"><button class="btn btn-warning"  type = "submit" name = "continue">Continue Shopping</button></a>
+					<a href = "process-cart.php?rdr=0"><button class="btn btn-success" type = "button" name = "order">Order</button></a>
+					<a  href = "process-cart.php?rdr=1"><button class="btn btn-warning"  type = "submit" name = "continue">Continue Shopping</button></a>
 				</div>
 				</form>
 				</div>

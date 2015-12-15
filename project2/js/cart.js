@@ -6,7 +6,7 @@ Version: 1.0
 Created: December 2015
 This file performs all the javascript functionality needed to autoupdate the cart
 -- Totally works... just don't know how I made it work *pterodactyl screech*
-Timecheck: &;19 and my life is not a total disaster
+Timecheck: 7:19 and my life is not a total disaster
 **/
 
 
@@ -208,6 +208,7 @@ function getRunningTotal()
 		runTotal += item;
 	}
 	document.getElementById("runningTotal").innerHTML = numeral(runTotal).format('$0,0.00');
+	document.getElementById("rT").value = runTotal;
 	return runTotal;
 	
 }
@@ -219,6 +220,7 @@ function updateTotal(shipCost)
 	var subtotal = e.replace("$", '');
 	total = parseFloat(subtotal) + parseFloat(shipCost);
 	document.getElementById("total").innerHTML = numeral(total).format('$0,0.00');
+	document.getElementById("tot").value = total;
 }
 
 //adds event listeners to the shipping radio options
@@ -234,6 +236,7 @@ function setCost(e)
 	var elem = document.getElementById("shipJs");
 	var shipCost = this.value;
 	elem.innerHTML = '<strong>' + numeral(shipCost).format('$0,0.00') + '</strong>';
+	document.getElementById('shipC').value = shipCost;
 	updateTotal(shipCost);
 }
 

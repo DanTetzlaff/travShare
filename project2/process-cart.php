@@ -15,12 +15,9 @@ Desc: Currently saving each cart item's state via php
 	$stock =  $_POST['itemStock'];
 	$frame =  $_POST['itemFrame'];
 	$qty = $_POST['itemQty'];
-	
-	if(isset($_POST['ship']))
-	{
-		$shipCost  = $_POST['ship'];
-		print_r($shipCost);
-	}
+	$_SESSION['shipCost'] = $_POST['shipC'];//saved cart shippingCost
+	$_SESSION["rT"] = $_POST['rT'];//saved cart runningTotal
+	$_SESSION["tot"] = $_POST["tot"];//saved cartTotal
 	
 	//print_r($size);
 	//print_r($stock);
@@ -37,8 +34,6 @@ Desc: Currently saving each cart item's state via php
 		$item->getTotal();
 	}
 	
-	
-	print_r($_SESSION['cart']);
 	
 	header("Location: view-cart.php");
 ?>
