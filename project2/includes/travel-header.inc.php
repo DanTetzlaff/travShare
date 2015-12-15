@@ -43,6 +43,7 @@
                <li><a href="index.php">Home</a></li>
                <li><a href="aboutus.php">About</a></li>
                <li><a href="#contact">Contact</a></li>
+			   <li><a href="statistics.php">Statistics</a></li>
                <li class="dropdown">
                  <a href="browse.php" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
                  <ul class="dropdown-menu">

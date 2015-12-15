@@ -148,7 +148,16 @@ echo '<h3>Test averageForImage(5)</h3>';
 $result = $gate->averageForImage(5);
 echo 'Average = ' . $result;
  
-      
+
+ echo '<h3>WebsiteStats</h3>';
+ $gate = new VisitTableGateway($dbAdapter);
+ $result = $gate->findAll();
+ foreach ($result as $row)
+ {
+	echo $row->id . " - " . $row->dateViewed . " - " . $row->ip_address . " - " . $row->countryCode . "<br/>";
+ }
+
+ 
 $dbAdapter->closeConnection();
 
 ?>
